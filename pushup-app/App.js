@@ -1,9 +1,49 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Alert, Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import * as firebase from 'firebase';
+import { REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN,
+        REACT_APP_DATABASE_URL, REACT_APP_STORAGE_BUCKET } from 'react-native-dotenv';
+
 
 export default class App extends React.Component {
+  componentDidMount() {
+
+    const firebaseConfig = {
+      apiKey: REACT_APP_API_KEY,
+      authDomain: REACT_APP_AUTH_DOMAIN,
+      databaseURL: REACT_APP_DATABASE_URL,
+      storageBucket: REACT_APP_STORAGE_BUCKET
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    //Expo.Google.logInAsync(options)
+
+    // const database = firebase.database();
+    //
+    //
+    // database.ref('users').on('value', (data) => {
+    //   console.log(data.toJSON());
+    // });
+    //
+    //
+    // database.ref('users/003').set(
+    //   {
+    //     name: "CL",
+    //     age: 8,
+    //   }
+    // ).then(() => {Alert.alert('Added to DATABASE!');
+    // }).catch((error) => {Alert.alert('ERRORRR');
+    // });
+    // 
+    // database.ref('/users/003/name').remove();
+
+  }
+
+
+
   state = {
     isLoadingComplete: false,
   };
