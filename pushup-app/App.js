@@ -1,10 +1,12 @@
 import React from 'react';
 import { Alert, Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
+import Expo from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import * as firebase from 'firebase';
 import { REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN,
-        REACT_APP_DATABASE_URL, REACT_APP_STORAGE_BUCKET } from 'react-native-dotenv';
+        REACT_APP_DATABASE_URL, REACT_APP_STORAGE_BUCKET,
+        REACT_APP_FACEBOOK_APP_ID} from 'react-native-dotenv';
 
 
 export default class App extends React.Component {
@@ -19,7 +21,32 @@ export default class App extends React.Component {
 
     firebase.initializeApp(firebaseConfig);
 
-    //Expo.Google.logInAsync(options)
+    async function logIn() {
+      try {
+        const {
+          type,
+          token,
+          expires,
+          permissions,
+          declinedPermissions,
+        } = await Expo.Facebook.logInWithReadPermissionsAsync(REACT_APP_FACEBOOK_APP_ID, {
+          permissions: ['public_profile'],
+        });
+        if (type === 'success') {
+          // Get the user's name using Facebook's Graph API
+          const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+          Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+        } else {
+          // type === 'cancel'
+        }
+      } catch ({ message }) {
+        alert(`Facebook Login Error: ${message}`);
+      }
+    }
+
+    logIn();
+
+
 
     // const database = firebase.database();
     //
@@ -37,7 +64,7 @@ export default class App extends React.Component {
     // ).then(() => {Alert.alert('Added to DATABASE!');
     // }).catch((error) => {Alert.alert('ERRORRR');
     // });
-    // 
+    //
     // database.ref('/users/003/name').remove();
 
   }
