@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
-import Expo from 'expo';
+import * as Expo from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import * as firebase from 'firebase';
 import { REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN,
@@ -21,30 +21,66 @@ export default class App extends React.Component {
 
     firebase.initializeApp(firebaseConfig);
 
-    async function logIn() {
-      try {
-        const {
-          type,
-          token,
-          expires,
-          permissions,
-          declinedPermissions,
-        } = await Expo.Facebook.logInWithReadPermissionsAsync(REACT_APP_FACEBOOK_APP_ID, {
-          permissions: ['public_profile'],
+    // Listen for authentication state to change.
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user != null) {
+        firebase.database().ref('users/' + user.uid).set(
+          {
+            name: 'new user',
+            age: 8,
+           }
+         ).then(() => {Alert.alert('Added to DATABASE!');
+         }).catch((error) => {Alert.alert('ERRORRR');
         });
-        if (type === 'success') {
-          // Get the user's name using Facebook's Graph API
-          const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-          Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
-        } else {
-          // type === 'cancel'
-        }
-      } catch ({ message }) {
-        alert(`Facebook Login Error: ${message}`);
+        alert("We are authenticated now!");
+      }
+
+      // Do other things
+    });
+
+    async function loginWithFacebook() {
+      const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+        REACT_APP_FACEBOOK_APP_ID,
+        { permissions: ['public_profile'] }
+      );
+
+      if (type === 'success') {
+        // Build Firebase credential with the Facebook access token.
+        const credential = firebase.auth.FacebookAuthProvider.credential(token);
+
+        // Sign in with credential from the Facebook user.
+        firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
+          alert(`Facebook Login Error: ${error}`);
+        });
       }
     }
 
-    logIn();
+    loginWithFacebook();
+
+    // async function logIn() {
+    //   try {
+    //     const {
+    //       type,
+    //       token,
+    //       expires,
+    //       permissions,
+    //       declinedPermissions,
+    //     } = await Expo.Facebook.logInWithReadPermissionsAsync(REACT_APP_FACEBOOK_APP_ID, {
+    //       permissions: ['public_profile'],
+    //     });
+    //     if (type === 'success') {
+    //       // Get the user's name using Facebook's Graph API
+    //       const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+    //       Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+    //     } else {
+    //       // type === 'cancel'
+    //     }
+    //   } catch ({ message }) {
+    //     alert(`Facebook Login Error: ${message}`);
+    //   }
+    // }
+    //
+    // logIn();
 
 
 
