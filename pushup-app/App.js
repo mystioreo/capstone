@@ -22,6 +22,7 @@ export default class App extends React.Component {
     firebase.initializeApp(firebaseConfig);
 
     // Listen for authentication state to change.
+    // this currently runs before authentication is really complete
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         firebase.database().ref('users/' + user.uid).set(
@@ -31,7 +32,9 @@ export default class App extends React.Component {
            }
          ).then(() => {Alert.alert('Added to DATABASE!');
          }).catch((error) => {Alert.alert('ERRORRR');
+
         });
+
         alert("We are authenticated now!");
       }
 
@@ -49,7 +52,11 @@ export default class App extends React.Component {
         const credential = firebase.auth.FacebookAuthProvider.credential(token);
 
         // Sign in with credential from the Facebook user.
-        firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
+        firebase.auth().signInAndRetrieveDataWithCredential(credential)
+        .then(() => {
+          alert('Logged in!', `Hi!`);
+        })
+        .catch((error) => {
           alert(`Facebook Login Error: ${error}`);
         });
       }
@@ -133,7 +140,7 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require('./assets/images/robot-dev.png'),
+        // require('./assets/images/splash.png'),
         require('./assets/images/robot-prod.png'),
       ]),
       Font.loadAsync({
