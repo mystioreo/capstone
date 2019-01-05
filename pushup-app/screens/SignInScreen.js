@@ -46,6 +46,8 @@ export default class SignInScreen extends React.Component {
         });
         if (type === 'success') {
 
+          await AsyncStorage.setItem('userToken', token);
+
           // Get the user's name using Facebook's Graph API
           const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
           const name = (await response.json()).name;
@@ -94,8 +96,11 @@ export default class SignInScreen extends React.Component {
 
 
 
+
+// await AsyncStorage.getItem('userToken');
+
   // _signInAsync = async () => {
-  //   await AsyncStorage.setItem('userToken', 'abc');
+    // await AsyncStorage.setItem('userToken', 'abc');
   //   this.props.navigation.navigate('App');
   // };
 }}
