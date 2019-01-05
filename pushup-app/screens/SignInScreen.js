@@ -27,13 +27,13 @@ import { REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN,
 
 export default class SignInScreen extends React.Component {
   static navigationOptions = {
-    title: 'Please sign in',
+    title: 'Log In',
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Sign in!" onPress={this._signInAsync} />
+        <Button title="Log in with Facebook" onPress={this._signInAsync} />
       </View>
     );
   }
