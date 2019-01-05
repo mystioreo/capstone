@@ -23,23 +23,23 @@ export default class App extends React.Component {
 
     // Listen for authentication state to change.
     // this currently runs before authentication is really complete
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user != null) {
-        firebase.database().ref('users/' + user.uid).set(
-          {
-            name: 'new user',
-            age: 8,
-           }
-         ).then(() => {Alert.alert('Added to DATABASE!');
-         }).catch((error) => {Alert.alert('ERRORRR');
-
-        });
-
-        alert("We are authenticated now!");
-      }
-
-      // Do other things
-    });
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user != null) {
+    //     firebase.database().ref('users/' + user.uid).set(
+    //       {
+    //         name: 'new user',
+    //         age: 8,
+    //        }
+    //      ).then(() => {Alert.alert('Added to DATABASE!');
+    //      }).catch((error) => {Alert.alert('ERRORRR');
+    //
+    //     });
+    //
+    //     alert("We are authenticated now!");
+    //   }
+    //
+    //   // Do other things
+    // });
 
     // async function loginWithFacebook() {
     //   const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
