@@ -56,8 +56,19 @@ export default class SignInScreen extends React.Component {
           // Sign in with credential from the Facebook user.
           firebase.auth().signInAndRetrieveDataWithCredential(credential)
           .then(() => {
-            Alert.alert('Logged in!', `Hi ${name}!`);
-            this.props.navigation.navigate('App');
+            firebase.auth().onAuthStateChanged((user) => {
+              if (user != null) {
+                firebase.database().ref('users/' + user.uid).set(
+                  {
+                    name: name,
+                  }
+                ).then(() => {
+                    Alert.alert(`Logged in as ${name}!`);
+                    this.props.navigation.navigate('App');
+                  }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
+                });
+              }
+            });    
           })
           .catch((error) => {
             Alert.alert(`Firebase Login Error: ${error}`);
