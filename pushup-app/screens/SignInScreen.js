@@ -41,27 +41,61 @@ export default class SignInScreen extends React.Component {
 
 
   _signInAsync = async () => {
+
+    try {
+        const {
+          type,
+          token,
+          expires,
+          permissions,
+          declinedPermissions,
+        } = await Expo.Facebook.logInWithReadPermissionsAsync(REACT_APP_FACEBOOK_APP_ID, {
+          permissions: ['public_profile'],
+        });
+        if (type === 'success') {
+          // Build Firebase credential with the Facebook access token.
+          const credential = firebase.auth.FacebookAuthProvider.credential(token);
+          // Sign in with credential from the Facebook user.
+          firebase.auth().signInAndRetrieveDataWithCredential(credential)
+          .then(() => {
+            this.props.navigation.navigate('App');
+          })
+          .catch((error) => {
+            Alert.alert(`Firebase Login Error: ${error}`);
+          });
+          // Get the user's name using Facebook's Graph API
+          const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+          Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+        } else {
+          // type === 'cancel'
+          Alert.alert('Unable to log you in.  Please try again later.');
+        }
+      } catch ({ message }) {
+        Alert.alert(`Facebook Login Error: ${message}`);
+      }
+
+
   // async function loginWithFacebook() {
-    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-      REACT_APP_FACEBOOK_APP_ID,
-      { permissions: ['public_profile'] }
-    );
+    // const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+    //   REACT_APP_FACEBOOK_APP_ID,
+    //   { permissions: ['public_profile'] }
+    // );
 
-    if (type === 'success') {
-      // Build Firebase credential with the Facebook access token.
-      const credential = firebase.auth.FacebookAuthProvider.credential(token);
-
-      // Sign in with credential from the Facebook user.
-      firebase.auth().signInAndRetrieveDataWithCredential(credential)
-      .then(() => {
-        Alert.alert('Logged in!', `Hi!`);
-        this.props.navigation.navigate('App');
-      })
-      .catch((error) => {
-        Alert.alert(`Facebook Login Error: ${error}`);
-      });
-    }
-  }
+  //   if (type === 'success') {
+  //     // Build Firebase credential with the Facebook access token.
+  //     const credential = firebase.auth.FacebookAuthProvider.credential(token);
+  //
+  //     // Sign in with credential from the Facebook user.
+  //     firebase.auth().signInAndRetrieveDataWithCredential(credential)
+  //     .then(() => {
+  //       Alert.alert('Logged in!', `Hi!`);
+  //       this.props.navigation.navigate('App');
+  //     })
+  //     .catch((error) => {
+  //       Alert.alert(`Facebook Login Error: ${error}`);
+  //     });
+  //   }
+  // }
 
 
 
@@ -69,7 +103,7 @@ export default class SignInScreen extends React.Component {
   //   await AsyncStorage.setItem('userToken', 'abc');
   //   this.props.navigation.navigate('App');
   // };
-}
+}}
 
 const styles = StyleSheet.create({
   container: {
