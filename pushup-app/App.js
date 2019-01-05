@@ -41,28 +41,28 @@ export default class App extends React.Component {
       // Do other things
     });
 
-    async function loginWithFacebook() {
-      const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-        REACT_APP_FACEBOOK_APP_ID,
-        { permissions: ['public_profile'] }
-      );
+    // async function loginWithFacebook() {
+    //   const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+    //     REACT_APP_FACEBOOK_APP_ID,
+    //     { permissions: ['public_profile'] }
+    //   );
+    //
+    //   if (type === 'success') {
+    //     // Build Firebase credential with the Facebook access token.
+    //     const credential = firebase.auth.FacebookAuthProvider.credential(token);
+    //
+    //     // Sign in with credential from the Facebook user.
+    //     firebase.auth().signInAndRetrieveDataWithCredential(credential)
+    //     .then(() => {
+    //       alert('Logged in!', `Hi!`);
+    //     })
+    //     .catch((error) => {
+    //       alert(`Facebook Login Error: ${error}`);
+    //     });
+    //   }
+    // }
 
-      if (type === 'success') {
-        // Build Firebase credential with the Facebook access token.
-        const credential = firebase.auth.FacebookAuthProvider.credential(token);
-
-        // Sign in with credential from the Facebook user.
-        firebase.auth().signInAndRetrieveDataWithCredential(credential)
-        .then(() => {
-          alert('Logged in!', `Hi!`);
-        })
-        .catch((error) => {
-          alert(`Facebook Login Error: ${error}`);
-        });
-      }
-    }
-
-    loginWithFacebook();
+    // loginWithFacebook();
 
     // async function logIn() {
     //   try {
