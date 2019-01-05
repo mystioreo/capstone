@@ -18,13 +18,6 @@ import { REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN,
         REACT_APP_FACEBOOK_APP_ID} from 'react-native-dotenv';
 
 
-
-
-
-
-
-
-
 export default class SignInScreen extends React.Component {
   static navigationOptions = {
     title: 'Log In',
@@ -32,13 +25,12 @@ export default class SignInScreen extends React.Component {
 
   render() {
     return (
+      // add real facebook login icon here
       <View style={styles.container}>
         <Button title="Log in with Facebook" onPress={this._signInAsync} />
       </View>
     );
   }
-
-
 
   _signInAsync = async () => {
 
@@ -53,19 +45,22 @@ export default class SignInScreen extends React.Component {
           permissions: ['public_profile'],
         });
         if (type === 'success') {
+
+          // Get the user's name using Facebook's Graph API
+          const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+          const name = (await response.json()).name;
           // Build Firebase credential with the Facebook access token.
           const credential = firebase.auth.FacebookAuthProvider.credential(token);
           // Sign in with credential from the Facebook user.
           firebase.auth().signInAndRetrieveDataWithCredential(credential)
           .then(() => {
+            Alert.alert('Logged in!', `Hi ${name}!`);
             this.props.navigation.navigate('App');
           })
           .catch((error) => {
             Alert.alert(`Firebase Login Error: ${error}`);
           });
-          // Get the user's name using Facebook's Graph API
-          const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-          Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+
         } else {
           // type === 'cancel'
           Alert.alert('Unable to log you in.  Please try again later.');
