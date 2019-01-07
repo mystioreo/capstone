@@ -9,6 +9,8 @@ import {
   View,
   Button,
   AsyncStorage,
+  Alert,
+  TouchableHighlight,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -47,6 +49,32 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+
+    // function getExerciseFromApiAsync() {
+    //   return fetch('https://wger.de/api/v2/exercise?language=2&status=2')
+    //     .then((response) => response.json())
+    //     .then((responseJson) => {
+    //       return responseJson.movies;
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    // }
+
+    async function getExerciseFromApi() {
+      try {
+        const response = await fetch(
+          'https://wger.de/api/v2/exercise?language=2&status=2'
+        );
+        const responseJson = await response.json();
+        console.log("clicked");
+        console.log(responseJson.results);
+        return responseJson.results;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -63,16 +91,22 @@ export default class HomeScreen extends React.Component {
 
           <View style={styles.welcomeContainer}>
 
-            <Image
-              style={{width: 50, height: 50}}
-              source={require('../assets/images/beer.png')}
-              accessibilityLabel="Beer"
-            />
-            <Image
-              style={{width: 50, height: 50}}
-              source={require('../assets/images/wine.png')}
-              accessibilityLabel="Wine"
-            />
+            <TouchableOpacity onPress={getExerciseFromApi}>
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('../assets/images/beer.png')}
+                accessibilityLabel="Beer"
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>Alert.alert("you clicked on wine")}>
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('../assets/images/wine.png')}
+                accessibilityLabel="Wine"
+              />
+            </TouchableOpacity>
+
             <Image
               style={{width: 50, height: 50}}
               source={require('../assets/images/cider.png')}

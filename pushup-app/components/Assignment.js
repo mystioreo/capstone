@@ -26,7 +26,7 @@ class Assignment extends Component {
       <View style={styles.container}>
           <View>
            <Image
-             style={{width: 50, height: 50}}
+             style={{width: 30, height: 30}}
              source={drinks[this.props.drink]}
              accessibilityLabel={this.props.drink}
            />
