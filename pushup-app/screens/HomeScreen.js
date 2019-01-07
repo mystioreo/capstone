@@ -86,7 +86,7 @@ export default class HomeScreen extends React.Component {
         console.log(possibleExercises);
         return possibleExercises;
       } catch (error) {
-        console.error(error);
+        Alert.alert(`Exercise Database error: ${error}`);
       }
     }
 
