@@ -55,9 +55,11 @@ export default class SignInScreen extends React.Component {
           const credential = firebase.auth.FacebookAuthProvider.credential(token);
           // Sign in with credential from the Facebook user.
           firebase.auth().signInAndRetrieveDataWithCredential(credential)
-          .then(() => {
-            firebase.auth().onAuthStateChanged((user) => {
+          .then(async () => {
+            firebase.auth().onAuthStateChanged(async (user) => {
               if (user != null) {
+                await AsyncStorage.setItem('userID', user.uid);
+
                 firebase.database().ref('users/' + user.uid).set(
                   {
                     name: name,
@@ -68,7 +70,7 @@ export default class SignInScreen extends React.Component {
                   }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
                 });
               }
-            });    
+            });
           })
           .catch((error) => {
             Alert.alert(`Firebase Login Error: ${error}`);

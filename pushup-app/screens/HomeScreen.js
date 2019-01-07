@@ -16,6 +16,8 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import * as firebase from 'firebase';
+
 import Assignment from '../components/Assignment';
 
 export default class HomeScreen extends React.Component {
@@ -50,22 +52,24 @@ export default class HomeScreen extends React.Component {
 
   render() {
 
-    // function getExerciseFromApiAsync() {
-    //   return fetch('https://wger.de/api/v2/exercise?language=2&status=2')
-    //     .then((response) => response.json())
-    //     .then((responseJson) => {
-    //       return responseJson.movies;
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //     });
-    // }
+    async function createAssignment(drink, exercise) {
 
+      const userID = await AsyncStorage.getItem('userID');
 
-    const createAssignment = (drink, exercise) => {
-      // add pertinent information to database
-      console.log(drink);
-      console.log(exercise);
+      if (userID != null) {
+        firebase.database().ref('users/' + userID + '/assignments').push(
+          {
+            drink: drink,
+            exercise: exercise,
+          }
+        ).then(() => {
+            Alert.alert(`added to db!`);
+
+          }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
+        });
+      } else {
+        Alert.alert("There was an error.  Please log out and log back in and try again!");
+      }
 
     }
 
@@ -76,12 +80,10 @@ export default class HomeScreen extends React.Component {
         );
         const responseJson = await response.json();
 
-        //add code to properly filter the results and select one at random from the list.
-
-        console.log("clicked");
-        // console.log(responseJson.results);
-
+        // take out this hard-coding once user is able to select equipment from settings screen
         const invalidEquipmentList = [1, 2, 3, 5, 6, 8, 9, 10];
+
+        // is there a cleaner / faster way to do this?
         const possibleExercises = [];
         responseJson.results.forEach((result) => {
           let valid = true;
