@@ -62,29 +62,48 @@ export default class HomeScreen extends React.Component {
     // }
 
 
-    const createAssignment = (drink) => {
-      const exerciseResults = getExerciseFromApi();
-      // const possibleExercises = exerciseResults.filter((result) => {
-      //   return result.equipment.includes(4);
-      // })
-      // console.log(exerciseResults);
-      // console.log(possibleExercises.count);
+    const createAssignment = (drink, exercise) => {
+      // add pertinent information to database
+      console.log(drink);
+      console.log(exercise);
 
     }
 
-    async function getExerciseFromApi() {
+    async function getExerciseFromApi(drink) {
       try {
         const response = await fetch(
           'https://wger.de/api/v2/exercise?language=2&status=2&limit=100'
         );
         const responseJson = await response.json();
+
+        //add code to properly filter the results and select one at random from the list.
+
         console.log("clicked");
         // console.log(responseJson.results);
-        const possibleExercises = responseJson.results.filter((result) => {
-          return result.equipment.includes(7);
+
+        const invalidEquipmentList = [1, 2, 3, 5, 6, 8, 9, 10];
+        const possibleExercises = [];
+        responseJson.results.forEach((result) => {
+          let valid = true;
+          if (result.equipment.length === 0) {
+            valid = false;
+          } else {
+          invalidEquipmentList.forEach((equipment) => {
+            if (result.equipment.includes(equipment)) {
+              valid = false;
+            }
+          })}
+          if (valid === true) {
+            possibleExercises.push(result);
+          }
         })
+
         console.log(possibleExercises);
-        return possibleExercises;
+        // const exercise = possibleExercises[Math.floor(Math.random() * possibleExercises.length)];
+        // console.log(`You selected ${exercise}`);
+        //
+        // createAssignment(drink, exercise);
+
       } catch (error) {
         Alert.alert(`Exercise Database error: ${error}`);
       }

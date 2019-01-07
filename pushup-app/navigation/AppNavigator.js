@@ -14,7 +14,10 @@ export default createSwitchNavigator({
 
     AuthLoading: AuthLoadingScreen,
     App: MainTabNavigator,
+
     Auth: AuthStack,
+    // could just do this?
+    // Auth: SignInScreen,
   },
   {
   initialRouteName: 'AuthLoading',
