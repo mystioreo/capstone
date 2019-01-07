@@ -61,15 +61,30 @@ export default class HomeScreen extends React.Component {
     //     });
     // }
 
+
+    const createAssignment = (drink) => {
+      const exerciseResults = getExerciseFromApi();
+      // const possibleExercises = exerciseResults.filter((result) => {
+      //   return result.equipment.includes(4);
+      // })
+      // console.log(exerciseResults);
+      // console.log(possibleExercises.count);
+
+    }
+
     async function getExerciseFromApi() {
       try {
         const response = await fetch(
-          'https://wger.de/api/v2/exercise?language=2&status=2'
+          'https://wger.de/api/v2/exercise?language=2&status=2&limit=100'
         );
         const responseJson = await response.json();
         console.log("clicked");
-        console.log(responseJson.results);
-        return responseJson.results;
+        // console.log(responseJson.results);
+        const possibleExercises = responseJson.results.filter((result) => {
+          return result.equipment.includes(7);
+        })
+        console.log(possibleExercises);
+        return possibleExercises;
       } catch (error) {
         console.error(error);
       }
@@ -91,7 +106,7 @@ export default class HomeScreen extends React.Component {
 
           <View style={styles.welcomeContainer}>
 
-            <TouchableOpacity onPress={getExerciseFromApi}>
+            <TouchableOpacity onPress={()=>createAssignment('beer')}>
               <Image
                 style={{width: 50, height: 50}}
                 source={require('../assets/images/beer.png')}
