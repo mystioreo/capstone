@@ -98,11 +98,8 @@ export default class HomeScreen extends React.Component {
           }
         })
 
-        console.log(possibleExercises);
-        // const exercise = possibleExercises[Math.floor(Math.random() * possibleExercises.length)];
-        // console.log(`You selected ${exercise}`);
-        //
-        // createAssignment(drink, exercise);
+        const exercise = possibleExercises[Math.floor(Math.random() * possibleExercises.length)];
+        createAssignment(drink, exercise);
 
       } catch (error) {
         Alert.alert(`Exercise Database error: ${error}`);
@@ -125,7 +122,7 @@ export default class HomeScreen extends React.Component {
 
           <View style={styles.welcomeContainer}>
 
-            <TouchableOpacity onPress={()=>createAssignment('beer')}>
+            <TouchableOpacity onPress={()=>getExerciseFromApi('beer')}>
               <Image
                 style={{width: 50, height: 50}}
                 source={require('../assets/images/beer.png')}
