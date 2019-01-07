@@ -52,25 +52,38 @@ export default class HomeScreen extends React.Component {
 
   render() {
 
+
+    // firebase.database().ref('users/' + getUserID()).on('value', (snapshot) => {
+    //   const highscore = snapshot.val().highscore;
+    //   console.log("New high score: " + highscore);
+    // });
+
+    //
+    // async function fetchAssignments() {
+    //   firebase.database.ref('users').on('value', (data) => {
+    //     console.log(data.toJSON());
+    //   });
+    //
+    //
+    // }
+
     async function createAssignment(drink, exercise) {
-
       const userID = await AsyncStorage.getItem('userID');
-
       if (userID != null) {
-        firebase.database().ref('users/' + userID + '/assignments').push(
+        firebase.database().ref('users/' + userID + '/assignments/' + Date.now()).set(
           {
             drink: drink,
             exercise: exercise,
+            date: Date.now(),
+            complete: false,
           }
         ).then(() => {
-            Alert.alert(`added to db!`);
-
+            console.log(`added assignment to database`);
           }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
         });
       } else {
-        Alert.alert("There was an error.  Please log out and log back in and try again!");
+        Alert.alert("There was an error.  Please log out, log back in, and try again!");
       }
-
     }
 
     async function getExerciseFromApi(drink) {
@@ -132,7 +145,7 @@ export default class HomeScreen extends React.Component {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={()=>Alert.alert("you clicked on wine")}>
+            <TouchableOpacity onPress={()=>getExerciseFromApi('wine')}>
               <Image
                 style={{width: 50, height: 50}}
                 source={require('../assets/images/wine.png')}
@@ -140,21 +153,32 @@ export default class HomeScreen extends React.Component {
               />
             </TouchableOpacity>
 
-            <Image
-              style={{width: 50, height: 50}}
-              source={require('../assets/images/cider.png')}
-              accessibilityLabel="Cider"
-            />
-            <Image
-              style={{width: 50, height: 50}}
-              source={require('../assets/images/cocktail.png')}
-              accessibilityLabel="Cocktail"
-            />
-            <Image
-              style={{width: 50, height: 50}}
-              source={require('../assets/images/spirit.png')}
-              accessibilityLabel="Spirit"
-            />
+            <TouchableOpacity onPress={()=>getExerciseFromApi('cider')}>
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('../assets/images/cider.png')}
+                accessibilityLabel="Cider"
+              />
+            </TouchableOpacity>
+
+
+            <TouchableOpacity onPress={()=>getExerciseFromApi('cocktail')}>
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('../assets/images/cocktail.png')}
+                accessibilityLabel="Cocktail"
+              />
+            </TouchableOpacity>
+
+
+            <TouchableOpacity onPress={()=>getExerciseFromApi('spirit')}>
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('../assets/images/spirit.png')}
+                accessibilityLabel="Spirit"
+              />
+            </TouchableOpacity>
+
 
           </View>
 
