@@ -34,12 +34,9 @@ class Assignment extends Component {
          </View>
 
          <View>
-           <Image
-             style={{width: 50, height: 50}}
-             source={require('../assets/images/push-up.png')}
-             accessibilityLabel="Drink"
-           />
-          <Text> Push-ups </Text>
+
+          <Text> {this.props.exercise.name} </Text>
+          <Text>{this.props.exercise.description}</Text>
 
          </View>
          <Button
@@ -57,6 +54,7 @@ class Assignment extends Component {
 
 Assignment.propTypes = {
   drink: PropTypes.string,
+  exercise: PropTypes.object,
 };
 
 const styles = StyleSheet.create({

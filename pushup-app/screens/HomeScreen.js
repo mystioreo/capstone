@@ -22,27 +22,31 @@ import Assignment from '../components/Assignment';
 
 export default class HomeScreen extends React.Component {
 
-  // static navigationOptions = {
-  //   title: 'Welcome to the app!',
-  // };
-  //
-  // render() {
-  //   return (
-  //     <View style={styles.container}>
-  //       <Button title="Show me more of the app" onPress={this._showMoreApp} />
-  //       <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
-  //     </View>
-  //   );
-  // }
-  //
-  // _showMoreApp = () => {
-  //   this.props.navigation.navigate('Other');
-  // };
-  //
-  // _signOutAsync = async () => {
-  //   await AsyncStorage.clear();
-  //   this.props.navigation.navigate('Auth');
-  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      assignments: [],
+    }
+  }
+
+  componentDidMount() {
+
+    const fetchAssignments = async () => {
+      const userID = await AsyncStorage.getItem('userID');
+      const assignments = firebase.database().ref('users/' + userID + '/assignments');
+      assignments.orderByChild("complete").equalTo(false).on('value', (data) => {
+        const incompleteAssignments = data.toJSON();
+        // data.toJSON();
+        // incompleteAssignments = incompleteAssignments.toArray();
+        this.setState({assignments: incompleteAssignments});
+        // console.log(incompleteAssignments);
+        // console.log(this.state);
+      });
+    }
+
+    fetchAssignments();
+
+  }
 
 
 
@@ -51,25 +55,6 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-
-
-    // firebase.database().ref('users/' + getUserID()).on('value', (snapshot) => {
-    //   const highscore = snapshot.val().highscore;
-    //   console.log("New high score: " + highscore);
-    // });
-
-    //
-    async function fetchAssignments() {
-      const userID = await AsyncStorage.getItem('userID');
-      const assignments = firebase.database().ref('users/' + userID + '/assignments');
-      assignments.orderByChild("complete").equalTo(false).on('value', (data) => {
-        console.log(data.toJSON());
-      });
-
-
-    }
-
-    fetchAssignments();
 
     async function createAssignment(drink, exercise) {
       const userID = await AsyncStorage.getItem('userID');
@@ -124,6 +109,20 @@ export default class HomeScreen extends React.Component {
         Alert.alert(`Exercise Database error: ${error}`);
       }
     }
+
+    const populateAssignments = () => {
+      const assignments = this.state.assignments;
+      return Object.keys(assignments).map( (keyName, keyIndex) => {
+        const {drink, exercise} = { ...assignments[keyName] };
+
+        return (
+          <Assignment
+            key={keyIndex}
+            drink={drink}
+            exercise={exercise}
+          />
+        )
+   })}
 
     return (
       <View style={styles.container}>
@@ -187,13 +186,14 @@ export default class HomeScreen extends React.Component {
 
           </View>
 
-          <Assignment drink="beer" />
-          <Assignment drink="wine" />
-          <Assignment drink="beer" />
-          <Assignment drink="spirit" />
-          <Assignment drink="spirit" />
-          <Assignment drink="cider" />
-          <Assignment drink="cocktail" />
+
+
+
+
+          <View>
+            {populateAssignments()}
+          </View>
+
 
 
       </ScrollView>
