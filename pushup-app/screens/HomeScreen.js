@@ -59,13 +59,17 @@ export default class HomeScreen extends React.Component {
     // });
 
     //
-    // async function fetchAssignments() {
-    //   firebase.database.ref('users').on('value', (data) => {
-    //     console.log(data.toJSON());
-    //   });
-    //
-    //
-    // }
+    async function fetchAssignments() {
+      const userID = await AsyncStorage.getItem('userID');
+      const assignments = firebase.database().ref('users/' + userID + '/assignments');
+      assignments.orderByChild("complete").equalTo(false).on('value', (data) => {
+        console.log(data.toJSON());
+      });
+
+
+    }
+
+    fetchAssignments();
 
     async function createAssignment(drink, exercise) {
       const userID = await AsyncStorage.getItem('userID');
@@ -136,6 +140,7 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View style={styles.welcomeContainer}>
+
 
             <TouchableOpacity onPress={()=>getExerciseFromApi('beer')}>
               <Image
