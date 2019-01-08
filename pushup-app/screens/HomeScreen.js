@@ -36,11 +36,7 @@ export default class HomeScreen extends React.Component {
       const assignments = firebase.database().ref('users/' + userID + '/assignments');
       assignments.orderByChild("complete").equalTo(false).on('value', (data) => {
         const incompleteAssignments = data.toJSON();
-        // data.toJSON();
-        // incompleteAssignments = incompleteAssignments.toArray();
         this.setState({assignments: incompleteAssignments});
-        // console.log(incompleteAssignments);
-        // console.log(this.state);
       });
     }
 
@@ -113,13 +109,14 @@ export default class HomeScreen extends React.Component {
     const populateAssignments = () => {
       const assignments = this.state.assignments;
       return Object.keys(assignments).map( (keyName, keyIndex) => {
-        const {drink, exercise} = { ...assignments[keyName] };
+        const {drink, exercise, date} = { ...assignments[keyName] };
 
         return (
           <Assignment
             key={keyIndex}
             drink={drink}
             exercise={exercise}
+            date={date}
           />
         )
    })}
@@ -127,7 +124,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
+          <View style={styles.drinksContainer}>
              <Image
                 source={
                   __DEV__
@@ -138,7 +135,7 @@ export default class HomeScreen extends React.Component {
               />
           </View>
 
-          <View style={styles.welcomeContainer}>
+          <View style={styles.drinksContainer}>
 
 
             <TouchableOpacity onPress={()=>getExerciseFromApi('beer')}>
@@ -187,9 +184,6 @@ export default class HomeScreen extends React.Component {
           </View>
 
 
-
-
-
           <View>
             {populateAssignments()}
           </View>
@@ -219,7 +213,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30,
   },
-  welcomeContainer: {
+  drinksContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',

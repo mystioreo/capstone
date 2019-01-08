@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import * as firebase from 'firebase';
 
 
 
-import { Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
+import { AsyncStorage, WebView, Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
 
 
 class Assignment extends Component {
@@ -19,7 +20,25 @@ class Assignment extends Component {
       cocktail: require('../assets/images/cocktail.png'),
     }
 
-    const markComplete = () => { Alert.alert('You clicked the button!')};
+    async function markComplete(key) {
+      const userID = await AsyncStorage.getItem('userID');
+      if (userID != null) {
+        firebase.database().ref('users/' + userID + '/assignments/' + key).update(
+          {
+            complete: true,
+          }
+        ).then(() => {
+            console.log(`assignment complete`);
+          }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
+        });
+      } else {
+        Alert.alert("There was an error.  Please log out, log back in, and try again!");
+      }
+    }
+
+    // const markComplete = () => { Alert.alert('You clicked the button!')};
+
+    const {drink, exercise, date} = { ...this.props };
 
     return (
 
@@ -27,20 +46,27 @@ class Assignment extends Component {
           <View>
            <Image
              style={{width: 30, height: 30}}
-             source={drinks[this.props.drink]}
-             accessibilityLabel={this.props.drink}
+             source={drinks[drink]}
+             accessibilityLabel={drink}
            />
-           <Text> Yesterday </Text>
+         <Text> {Date.now() - date} </Text>
          </View>
 
          <View>
 
-          <Text> {this.props.exercise.name} </Text>
-          <Text>{this.props.exercise.description}</Text>
+          <Text> {exercise.name} </Text>
+
+        {
+          // <WebView
+          //   originWhitelist={['*']}
+          //   source={{ html: exercise.description }}
+          // />
+        }
+
 
          </View>
          <Button
-           onPress={markComplete}
+           onPress={() => markComplete(date)}
            title="✓"
            color="#841584"
            accessibilityLabel="Mark Complete"
@@ -55,6 +81,7 @@ class Assignment extends Component {
 Assignment.propTypes = {
   drink: PropTypes.string,
   exercise: PropTypes.object,
+  date: PropTypes.number,
 };
 
 const styles = StyleSheet.create({
