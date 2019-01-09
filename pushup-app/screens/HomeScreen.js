@@ -14,6 +14,9 @@ import {
   Modal,
   WebView,
 } from 'react-native';
+
+import HTMLView from 'react-native-htmlview';
+
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
@@ -103,7 +106,7 @@ export default class HomeScreen extends React.Component {
                             });
 
 
-// console.log(invalidEquipmentList);
+ // console.log(invalidEquipmentList);
         // is there a cleaner / faster way to do this?
         const possibleExercises = [];
         responseJson.results.forEach((result) => {
@@ -202,7 +205,7 @@ export default class HomeScreen extends React.Component {
             </TouchableOpacity>
 
 
-            <TouchableOpacity onPress={()=>setModalVisible(true, "hello")}>
+            <TouchableOpacity onPress={()=>getExerciseFromApi('spirit')}>
               <Image
                 style={{width: 50, height: 50}}
                 source={require('../assets/images/spirit.png')}
@@ -225,19 +228,12 @@ export default class HomeScreen extends React.Component {
             <View style={{marginTop: 100}}>
                 <View>
                   <Text>{this.state.modalTitle}</Text>
-                    <WebView
-          originWhitelist={['*']}
-          source={{ html: '<h1>Hello world</h1>' }}
-        />
+                  <HTMLView
+                    value={this.state.modalDescription}
+                  />
 
-                  {
-                  // <WebView
-                  //   originWhitelist={['*']}
-                  //   source={{ html: '<p>Get on a mat and lie on your back. Contract your abs, stretch your raise and legs and raise them (your head and shoulders are also be raised). Make sure your lower back remains in contact with the mat.</p>' }}
-                  // />
-                }
+
                 {console.log(this.state.modalDescription)}
-                <Text>{this.state.modalDescription}</Text>
 
                   <TouchableHighlight
                     onPress={() => {
