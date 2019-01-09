@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Alert, Picker, View, Button, StyleSheet, AsyncStorage } from 'react-native';
-import { ExpoConfigView } from '@expo/samples';
 import { CheckBox } from 'react-native-elements';
+import HTMLView from 'react-native-htmlview';
 
 export default class SettingsScreen extends React.Component {
 

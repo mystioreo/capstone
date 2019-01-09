@@ -7,17 +7,14 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button,
   AsyncStorage,
   Alert,
   TouchableHighlight,
   Modal,
-  WebView,
 } from 'react-native';
 
 import HTMLView from 'react-native-htmlview';
 
-import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
@@ -45,7 +42,6 @@ export default class HomeScreen extends React.Component {
       assignments.orderByChild("complete").equalTo(false).on('value', (data) => {
         const incompleteAssignments = data.toJSON();
         this.setState({assignments: incompleteAssignments});
-        console.log(incompleteAssignments);
       });
     }
 
@@ -108,7 +104,7 @@ export default class HomeScreen extends React.Component {
                             });
 
 
- // console.log(invalidEquipmentList);
+
         // is there a cleaner / faster way to do this?
         const possibleExercises = [];
         responseJson.results.forEach((result) => {
@@ -126,7 +122,6 @@ export default class HomeScreen extends React.Component {
           }
         })
 
-        // console.log(possibleExercises);
         const exercise = possibleExercises[Math.floor(Math.random() * possibleExercises.length)];
         createAssignment(drink, exercise);
 
@@ -163,11 +158,7 @@ export default class HomeScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.drinksContainer}>
              <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/splash.png')
-                    : require('../assets/images/robot-prod.png')
-                }
+                source={ require('../assets/images/splash.png') }
                 style={styles.welcomeImage}
               />
           </View>
@@ -234,9 +225,6 @@ export default class HomeScreen extends React.Component {
                   <HTMLView
                     value={this.state.modalDescription}
                   />
-
-
-                {console.log(this.state.modalDescription)}
 
                   <TouchableHighlight
                     onPress={() => {

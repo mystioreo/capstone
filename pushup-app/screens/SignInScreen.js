@@ -13,9 +13,7 @@ import {
 import * as Expo from 'expo';
 // import AppNavigator from './navigation/AppNavigator';
 import * as firebase from 'firebase';
-import { REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN,
-        REACT_APP_DATABASE_URL, REACT_APP_STORAGE_BUCKET,
-        REACT_APP_FACEBOOK_APP_ID} from 'react-native-dotenv';
+import { REACT_APP_FACEBOOK_APP_ID} from 'react-native-dotenv';
 
 
 export default class SignInScreen extends React.Component {
@@ -42,7 +40,7 @@ export default class SignInScreen extends React.Component {
           permissions,
           declinedPermissions,
         } = await Expo.Facebook.logInWithReadPermissionsAsync(REACT_APP_FACEBOOK_APP_ID, {
-          permissions: ['public_profile'],
+          permissions: ['public_profile','email'],
         });
         if (type === 'success') {
 
@@ -69,7 +67,7 @@ export default class SignInScreen extends React.Component {
                     try {
                       AsyncStorage.multiSet([["barbell", "false"], ["szbar", "false"],
                       ["dumbbell", "false"], ["swissball", "false"], ["pullupbar", "false"], ["bench", "false"],
-                      ["inclinebench", "false"], ["kettlebell", "false"]]);
+                      ["inclinebench", "false"], ["kettlebell", "false"], ["language", "2"]]);
                     } catch (error) {
                       Alert.alert(`Error loading settings: ${error}`)
                     }
