@@ -64,7 +64,7 @@ export default class HomeScreen extends React.Component {
     async function createAssignment(drink, exercise) {
       const userID = await AsyncStorage.getItem('userID');
       if (userID != null) {
-        firebase.database().ref('users/' + userID + '/assignments/' + Date.now()).set(
+        firebase.database().ref('users/' + userID + '/assignments/').push(
           {
             drink: drink,
             exercise: exercise,
@@ -144,6 +144,7 @@ export default class HomeScreen extends React.Component {
         return (
           <Assignment
             key={keyIndex}
+            dbkey={keyName}
             drink={drink}
             exercise={exercise}
             date={date}

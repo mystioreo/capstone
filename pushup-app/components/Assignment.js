@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 
 
 
-import { AsyncStorage, WebView, Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
+import { AsyncStorage, Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
 
 
 class Assignment extends Component {
@@ -39,7 +39,7 @@ class Assignment extends Component {
 
     // const markComplete = () => { Alert.alert('You clicked the button!')};
 
-    const {drink, exercise, date, showDescriptionCallback} = { ...this.props };
+    const {drink, exercise, date, showDescriptionCallback, dbkey} = { ...this.props };
 
     return (
 
@@ -64,7 +64,7 @@ class Assignment extends Component {
 
          </View>
          <Button
-           onPress={() => markComplete(date)}
+           onPress={() => markComplete(dbkey)}
            title="✓"
            color="#841584"
            accessibilityLabel="Mark Complete"
@@ -81,6 +81,7 @@ Assignment.propTypes = {
   exercise: PropTypes.object,
   date: PropTypes.number,
   showDescriptionCallback: PropTypes.func,
+  dbkey: PropTypes.string,
 };
 
 const styles = StyleSheet.create({
