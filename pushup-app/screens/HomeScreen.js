@@ -35,7 +35,6 @@ export default class HomeScreen extends React.Component {
   }
 
   componentDidMount() {
-
     const fetchAssignments = async () => {
       const userID = await AsyncStorage.getItem('userID');
       const assignments = firebase.database().ref('users/' + userID + '/assignments');
@@ -44,19 +43,14 @@ export default class HomeScreen extends React.Component {
         this.setState({assignments: incompleteAssignments});
       });
     }
-
     fetchAssignments();
-
   }
-
-
 
   static navigationOptions = {
     header: null,
   };
 
   render() {
-
     async function createAssignment(drink, exercise) {
       const userID = await AsyncStorage.getItem('userID');
       if (userID != null) {
@@ -83,9 +77,7 @@ export default class HomeScreen extends React.Component {
           'https://wger.de/api/v2/exercise?language=' + language + '&status=2&limit=100'
         );
         const responseJson = await response.json();
-
         const invalidEquipmentList = [];
-
         const equipmentNumbers = {"barbell": 1, "szbar": 2, "dumbbell": 3, "swissball": 5,
                                   "pullupbar": 6, "bench": 8, "inclinebench": 9, "kettlebell": 10};
 
@@ -103,9 +95,6 @@ export default class HomeScreen extends React.Component {
                               });
                             });
 
-
-
-        // is there a cleaner / faster way to do this?
         const possibleExercises = [];
         responseJson.results.forEach((result) => {
           let valid = true;
@@ -149,7 +138,7 @@ export default class HomeScreen extends React.Component {
     })}}
 
     const showDescription = (visible, title, description) => {
-    this.setState({modalVisible: visible, modalTitle: title, modalDescription: description });
+      this.setState({modalVisible: visible, modalTitle: title, modalDescription: description });
     }
 
 
@@ -189,7 +178,6 @@ export default class HomeScreen extends React.Component {
               />
             </TouchableOpacity>
 
-
             <TouchableOpacity onPress={()=>getExerciseFromApi('cocktail')}>
               <Image
                 style={{width: 50, height: 50}}
@@ -197,7 +185,6 @@ export default class HomeScreen extends React.Component {
                 accessibilityLabel="Cocktail"
               />
             </TouchableOpacity>
-
 
             <TouchableOpacity onPress={()=>getExerciseFromApi('spirit')}>
               <Image
@@ -207,19 +194,15 @@ export default class HomeScreen extends React.Component {
               />
             </TouchableOpacity>
 
-
           </View>
-
 
           <View>
             <Modal
               animationType="slide"
               transparent={false}
               visible={this.state.modalVisible}
-              onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            }}>
-            <View style={{marginTop: 100}}>
+              >
+              <View style={{marginTop: 100}}>
                 <View>
                   <Text>{this.state.modalTitle}</Text>
                   <HTMLView
@@ -235,12 +218,8 @@ export default class HomeScreen extends React.Component {
                 </View>
               </View>
             </Modal>
-
             {populateAssignments()}
           </View>
-
-
-
       </ScrollView>
     </View>
   )

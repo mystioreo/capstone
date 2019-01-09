@@ -22,7 +22,6 @@ export default class AuthLoadingScreen extends React.Component {
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
   };
 
-  // Render any loading content that you like here
   render() {
     return (
       <View style={styles.container}>

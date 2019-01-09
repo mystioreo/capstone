@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import * as firebase from 'firebase';
-
-
-
 import { AsyncStorage, Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
-
 
 class Assignment extends Component {
   render() {
-
-    //consider defining this elsewhere
 
     const drinks = {
       beer: require('../assets/images/beer.png'),
@@ -36,34 +30,26 @@ class Assignment extends Component {
       }
     }
 
-    // const markComplete = () => { Alert.alert('You clicked the button!')};
-
     const {drink, exercise, date, showDescriptionCallback, dbkey} = { ...this.props };
 
     return (
 
       <View style={styles.container}>
           <View>
-           <Image
+            <Image
              style={{width: 30, height: 30}}
              source={drinks[drink]}
              accessibilityLabel={drink}
-           />
-         <Text> {Date.now() - date} </Text>
+            />
+            <Text> {Date.now() - date} </Text>
          </View>
 
          <View>
-
-          <Text onPress={() => showDescriptionCallback(true, exercise.name, exercise.description)}>
-            {exercise.name}
-          </Text>
-
-        {
-
-        }
-
-
+            <Text onPress={() => showDescriptionCallback(true, exercise.name, exercise.description)}>
+              {exercise.name}
+            </Text>
          </View>
+
          <Button
            onPress={() => markComplete(dbkey)}
            title="✓"
@@ -71,8 +57,6 @@ class Assignment extends Component {
            accessibilityLabel="Mark Complete"
          />
       </View>
-
-
     );
   }
 }
