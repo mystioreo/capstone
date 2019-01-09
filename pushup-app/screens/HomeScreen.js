@@ -45,6 +45,7 @@ export default class HomeScreen extends React.Component {
       assignments.orderByChild("complete").equalTo(false).on('value', (data) => {
         const incompleteAssignments = data.toJSON();
         this.setState({assignments: incompleteAssignments});
+        console.log(incompleteAssignments);
       });
     }
 
@@ -81,8 +82,9 @@ export default class HomeScreen extends React.Component {
 
     async function getExerciseFromApi(drink) {
       try {
+        const language = await AsyncStorage.getItem('language');
         const response = await fetch(
-          'https://wger.de/api/v2/exercise?language=2&status=2&limit=100'
+          'https://wger.de/api/v2/exercise?language=' + language + '&status=2&limit=100'
         );
         const responseJson = await response.json();
 

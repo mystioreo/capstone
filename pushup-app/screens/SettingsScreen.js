@@ -53,6 +53,15 @@ export default class SettingsScreen extends React.Component {
       }
     }
 
+    const changeLanguage = async (language) => {
+      try {
+        await AsyncStorage.setItem('language', language);
+        this.setState({language});
+      } catch (error) {
+          Alert.alert("There was an error saving your settings.  Please try again.")
+      }
+    }
+
     return (
         <View style={styles.container}>
 
@@ -111,7 +120,7 @@ export default class SettingsScreen extends React.Component {
             <Picker
               selectedValue={this.state.language}
               style={{ height: 50, width: 100 }}
-              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+              onValueChange={(itemValue, itemIndex) => changeLanguage(itemValue)}>
               <Picker.Item label="Deutsch" value="1" />
               <Picker.Item label="English" value="2" />
             </Picker>

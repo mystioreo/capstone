@@ -23,6 +23,7 @@ class Assignment extends Component {
     async function markComplete(key) {
       const userID = await AsyncStorage.getItem('userID');
       if (userID != null) {
+        console.log(key)
         firebase.database().ref('users/' + userID + '/assignments/' + key).update(
           {
             complete: true,
@@ -57,7 +58,7 @@ class Assignment extends Component {
           <Text onPress={() => showDescriptionCallback(true, exercise.name, exercise.description)}> {exercise.name} </Text>
 
         {
-        
+
         }
 
 
