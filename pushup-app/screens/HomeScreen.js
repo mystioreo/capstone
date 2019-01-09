@@ -11,6 +11,8 @@ import {
   AsyncStorage,
   Alert,
   TouchableHighlight,
+  Modal,
+  WebView,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -26,6 +28,9 @@ export default class HomeScreen extends React.Component {
     super(props);
     this.state = {
       assignments: [],
+      modalVisible: false,
+      modalTitle: "",
+      modalDescription: "",
     }
   }
 
@@ -98,7 +103,7 @@ export default class HomeScreen extends React.Component {
                             });
 
 
-console.log(invalidEquipmentList);
+// console.log(invalidEquipmentList);
         // is there a cleaner / faster way to do this?
         const possibleExercises = [];
         responseJson.results.forEach((result) => {
@@ -137,9 +142,15 @@ console.log(invalidEquipmentList);
             drink={drink}
             exercise={exercise}
             date={date}
+            showDescriptionCallback={showDescription}
           />
         )
-   })}}
+    })}}
+
+    const showDescription = (visible, title, description) => {
+    this.setState({modalVisible: visible, modalTitle: title, modalDescription: description });
+    }
+
 
     return (
       <View style={styles.container}>
@@ -156,7 +167,6 @@ console.log(invalidEquipmentList);
           </View>
 
           <View style={styles.drinksContainer}>
-
 
             <TouchableOpacity onPress={()=>getExerciseFromApi('beer')}>
               <Image
@@ -192,7 +202,7 @@ console.log(invalidEquipmentList);
             </TouchableOpacity>
 
 
-            <TouchableOpacity onPress={()=>getExerciseFromApi('spirit')}>
+            <TouchableOpacity onPress={()=>setModalVisible(true, "hello")}>
               <Image
                 style={{width: 50, height: 50}}
                 source={require('../assets/images/spirit.png')}
@@ -205,6 +215,40 @@ console.log(invalidEquipmentList);
 
 
           <View>
+            <Modal
+              animationType="slide"
+              transparent={false}
+              visible={this.state.modalVisible}
+              onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            }}>
+            <View style={{marginTop: 100}}>
+                <View>
+                  <Text>{this.state.modalTitle}</Text>
+                    <WebView
+          originWhitelist={['*']}
+          source={{ html: '<h1>Hello world</h1>' }}
+        />
+
+                  {
+                  // <WebView
+                  //   originWhitelist={['*']}
+                  //   source={{ html: '<p>Get on a mat and lie on your back. Contract your abs, stretch your raise and legs and raise them (your head and shoulders are also be raised). Make sure your lower back remains in contact with the mat.</p>' }}
+                  // />
+                }
+                {console.log(this.state.modalDescription)}
+                <Text>{this.state.modalDescription}</Text>
+
+                  <TouchableHighlight
+                    onPress={() => {
+                      showDescription(false);
+                    }}>
+                    <Text>Close</Text>
+                  </TouchableHighlight>
+                </View>
+              </View>
+            </Modal>
+
             {populateAssignments()}
           </View>
 

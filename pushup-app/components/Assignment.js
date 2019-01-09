@@ -38,7 +38,7 @@ class Assignment extends Component {
 
     // const markComplete = () => { Alert.alert('You clicked the button!')};
 
-    const {drink, exercise, date} = { ...this.props };
+    const {drink, exercise, date, showDescriptionCallback} = { ...this.props };
 
     return (
 
@@ -54,13 +54,10 @@ class Assignment extends Component {
 
          <View>
 
-          <Text> {exercise.name} </Text>
+          <Text onPress={() => showDescriptionCallback(true, exercise.name, exercise.description)}> {exercise.name} </Text>
 
         {
-          // <WebView
-          //   originWhitelist={['*']}
-          //   source={{ html: exercise.description }}
-          // />
+        
         }
 
 
@@ -82,6 +79,7 @@ Assignment.propTypes = {
   drink: PropTypes.string,
   exercise: PropTypes.object,
   date: PropTypes.number,
+  showDescriptionCallback: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
