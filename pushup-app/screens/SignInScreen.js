@@ -60,7 +60,7 @@ export default class SignInScreen extends React.Component {
               if (user != null) {
                 await AsyncStorage.setItem('userID', user.uid);
 
-                firebase.database().ref('users/' + user.uid).set(
+                firebase.database().ref('users/' + user.uid).update(
                   {
                     name: name,
                   }

@@ -108,6 +108,7 @@ export default class HomeScreen extends React.Component {
 
     const populateAssignments = () => {
       const assignments = this.state.assignments;
+      if (assignments) {
       return Object.keys(assignments).map( (keyName, keyIndex) => {
         const {drink, exercise, date} = { ...assignments[keyName] };
 
@@ -119,7 +120,7 @@ export default class HomeScreen extends React.Component {
             date={date}
           />
         )
-   })}
+   })}}
 
     return (
       <View style={styles.container}>
