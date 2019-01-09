@@ -81,6 +81,11 @@ export default class HomeScreen extends React.Component {
         // take out this hard-coding once user is able to select equipment from settings screen
         const invalidEquipmentList = [1, 2, 3, 5, 6, 8, 9, 10];
 
+        const userSettings = await AsyncStorage.multiGet(['barbell','szbar', 'dumbbell', 'swissball',
+                                                          'pullupbar', 'bench', 'inclinebench', 'kettlebell']);
+
+        console.log(userSettings);
+
         // is there a cleaner / faster way to do this?
         const possibleExercises = [];
         responseJson.results.forEach((result) => {
@@ -98,6 +103,7 @@ export default class HomeScreen extends React.Component {
           }
         })
 
+        // console.log(possibleExercises);
         const exercise = possibleExercises[Math.floor(Math.random() * possibleExercises.length)];
         createAssignment(drink, exercise);
 

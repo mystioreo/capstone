@@ -66,6 +66,13 @@ export default class SignInScreen extends React.Component {
                   }
                 ).then(() => {
                     Alert.alert(`Logged in as ${name}!`);
+                    try {
+                      AsyncStorage.multiSet([["barbell", "false"], ["szbar", "false"],
+                      ["dumbbell", "false"], ["swissball", "false"], ["pullupbar", "false"], ["bench", "false"],
+                      ["inclinebench", "false"], ["kettlebell", "false"]]);
+                    } catch (error) {
+                      Alert.alert(`Error loading settings: ${error}`)
+                    }
                     this.props.navigation.navigate('App');
                   }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
                 });

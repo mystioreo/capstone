@@ -1,5 +1,5 @@
 import React from 'react';
-import { Picker, View, Button, StyleSheet, AsyncStorage } from 'react-native';
+import { Alert, Picker, View, Button, StyleSheet, AsyncStorage } from 'react-native';
 import { ExpoConfigView } from '@expo/samples';
 import { CheckBox } from 'react-native-elements';
 
@@ -20,13 +20,38 @@ export default class SettingsScreen extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const getSettings = async () => {
+      const userSettings = await AsyncStorage.multiGet(['barbell','szbar', 'dumbbell', 'swissball',
+                                                        'pullupbar', 'bench', 'inclinebench', 'kettlebell']);
+      userSettings.forEach( (setting) => {
+        this.setState({
+          [setting[0]]: setting[1],
+        });
+        console.log(setting[0]);
+        console.log(setting[1]);
+      })
+
+    }
+
+    getSettings();
+  }
+
   static navigationOptions = {
     title: 'Settings',
   };
 
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
+
+    const changeSettings = async (setting) => {
+      const checked = this.state[setting];
+      try {
+        await AsyncStorage.setItem(setting, checked === "true" ? "false" : "true");
+        this.setState({[setting]: checked === "true" ? "false" : "true"});
+      } catch (error) {
+          Alert.alert("There was an error saving your settings.  Please try again.")
+      }
+    }
 
     return (
         <View style={styles.container}>
@@ -34,50 +59,50 @@ export default class SettingsScreen extends React.Component {
 
             <CheckBox
               title='Barbell'
-              checked={this.state.barbell}
-              onPress={() => this.setState({barbell: !this.state.barbell})}
+              checked={this.state.barbell === "true" ? true : false}
+              onPress={() => changeSettings('barbell')}
             />
 
             <CheckBox
               title='SZ-bar'
-              checked={this.state.szbar}
-              onPress={() => this.setState({szbar: !this.state.szbar})}
+              checked={this.state.szbar === "true" ? true : false}
+              onPress={() => changeSettings('szbar')}
             />
 
             <CheckBox
               title='Dumbbell'
-              checked={this.state.dumbbell}
-              onPress={() => this.setState({dumbbell: !this.state.dumbbell})}
+              checked={this.state.dumbbell === "true" ? true : false}
+              onPress={() => changeSettings('dumbbell')}
             />
 
             <CheckBox
               title='Swiss Ball'
-              checked={this.state.swissball}
-              onPress={() => this.setState({swissball: !this.state.swissball})}
+              checked={this.state.swissball === "true" ? true : false}
+              onPress={() => changeSettings('swissball')}
             />
 
             <CheckBox
               title='Pull-up Bar'
-              checked={this.state.pullupbar}
-              onPress={() => this.setState({pullupbar: !this.state.pullupbar})}
+              checked={this.state.pullupbar === "true" ? true : false}
+              onPress={() => changeSettings('pullupbar')}
             />
 
             <CheckBox
               title='Bench'
-              checked={this.state.bench}
-              onPress={() => this.setState({bench: !this.state.bench})}
+              checked={this.state.bench === "true" ? true : false}
+              onPress={() => changeSettings('bench')}
             />
 
             <CheckBox
               title='Incline Bench'
-              checked={this.state.inclinebench}
-              onPress={() => this.setState({inclinebench: !this.state.inclinebench})}
+              checked={this.state.inclinebench === "true" ? true : false}
+              onPress={() => changeSettings('inclinebench')}
             />
 
             <CheckBox
               title='Kettlebell'
-              checked={this.state.kettlebell}
-              onPress={() => this.setState({kettlebell: !this.state.kettlebell})}
+              checked={this.state.kettlebell === "true" ? true : false}
+              onPress={() => changeSettings('kettlebell')}
             />
 
             <Picker
