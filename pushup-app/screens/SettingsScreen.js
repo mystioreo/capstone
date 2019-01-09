@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Picker, View, Button, StyleSheet, AsyncStorage } from 'react-native';
+import { Text, Alert, Picker, View, Button, StyleSheet, AsyncStorage } from 'react-native';
 import { ExpoConfigView } from '@expo/samples';
 import { CheckBox } from 'react-native-elements';
 
@@ -55,8 +55,8 @@ export default class SettingsScreen extends React.Component {
 
     return (
         <View style={styles.container}>
-          <Button title="Log Out" onPress={this._signOutAsync} />
 
+            <Text>Equipment</Text>
             <CheckBox
               title='Barbell'
               checked={this.state.barbell === "true" ? true : false}
@@ -105,6 +105,9 @@ export default class SettingsScreen extends React.Component {
               onPress={() => changeSettings('kettlebell')}
             />
 
+
+          <View style={styles.container}>
+            <Text>Exercise Language (will not change existing exercises)</Text>
             <Picker
               selectedValue={this.state.language}
               style={{ height: 50, width: 100 }}
@@ -112,6 +115,11 @@ export default class SettingsScreen extends React.Component {
               <Picker.Item label="Deutsch" value="1" />
               <Picker.Item label="English" value="2" />
             </Picker>
+          </View>
+          <View>
+            <Button title="Log Out" onPress={this._signOutAsync} />
+          </View>
+
         </View>
       );
   }
