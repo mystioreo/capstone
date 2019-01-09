@@ -78,14 +78,27 @@ export default class HomeScreen extends React.Component {
         );
         const responseJson = await response.json();
 
-        // take out this hard-coding once user is able to select equipment from settings screen
-        const invalidEquipmentList = [1, 2, 3, 5, 6, 8, 9, 10];
+        const invalidEquipmentList = [];
 
-        const userSettings = await AsyncStorage.multiGet(['barbell','szbar', 'dumbbell', 'swissball',
-                                                          'pullupbar', 'bench', 'inclinebench', 'kettlebell']);
+        const equipmentNumbers = {"barbell": 1, "szbar": 2, "dumbbell": 3, "swissball": 5,
+                                  "pullupbar": 6, "bench": 8, "inclinebench": 9, "kettlebell": 10};
 
-        console.log(userSettings);
+        await AsyncStorage.multiGet(['barbell','szbar', 'dumbbell', 'swissball',
+                            'pullupbar', 'bench', 'inclinebench', 'kettlebell'],
+                            (err, stores) => {
+                              stores.map((result, i, store) => {
+                                // get at each store's key/value so you can work with it
+                                const key = store[i][0];
+                                const value = store[i][1];
 
+                                if (value === "false") {
+                                  invalidEquipmentList.push(equipmentNumbers[key]);
+                                }
+                              });
+                            });
+
+
+console.log(invalidEquipmentList);
         // is there a cleaner / faster way to do this?
         const possibleExercises = [];
         responseJson.results.forEach((result) => {
