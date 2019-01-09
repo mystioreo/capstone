@@ -38,6 +38,7 @@ export default class HomeScreen extends React.Component {
     const fetchAssignments = async () => {
       const userID = await AsyncStorage.getItem('userID');
       const assignments = firebase.database().ref('users/' + userID + '/assignments');
+
       assignments.orderByChild("complete").equalTo(false).on('value', (data) => {
         const incompleteAssignments = data.toJSON();
         this.setState({assignments: incompleteAssignments});

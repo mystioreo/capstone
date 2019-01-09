@@ -65,7 +65,7 @@ export default class SettingsScreen extends React.Component {
     return (
         <View style={styles.container}>
 
-            <Text>Equipment</Text>
+            <Text style={styles.center}>Equipment</Text>
             <CheckBox
               title='Barbell'
               checked={this.state.barbell === "true" ? true : false}
@@ -116,16 +116,16 @@ export default class SettingsScreen extends React.Component {
 
 
           <View style={styles.container}>
-            <Text>Exercise Language (will not change existing exercises)</Text>
+            <Text style={styles.center}>Exercise Language (will not change existing exercises)</Text>
             <Picker
               selectedValue={this.state.language}
-              style={{ height: 50, width: 100 }}
+              style={styles.picker}
               onValueChange={(itemValue, itemIndex) => changeLanguage(itemValue)}>
               <Picker.Item label="Deutsch" value="1" />
               <Picker.Item label="English" value="2" />
             </Picker>
           </View>
-          <View>
+          <View style={styles.logout}>
             <Button title="Log Out" onPress={this._signOutAsync} />
           </View>
 
@@ -144,5 +144,21 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
+    justifyContent: 'flex-start',
   },
+  center: {
+    padding: 10,
+    alignSelf: 'center',
+  },
+  picker: {
+    margin: 0,
+    position: 'absolute',
+    height: 100,
+    width: 100,
+    alignSelf: 'center',
+  },
+  logout: {
+    padding: 15,
+    alignSelf: 'flex-end',
+  }
 });
