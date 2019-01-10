@@ -109,7 +109,8 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 9,
-    color: '#252524'
+    color: '#252524',
+    textAlign: 'center',
   }
 });
 
