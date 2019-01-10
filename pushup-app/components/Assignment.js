@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import * as firebase from 'firebase';
 import { AsyncStorage, Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements'
+
+
 
 class Assignment extends Component {
   render() {
@@ -51,12 +54,12 @@ class Assignment extends Component {
          </View>
 
          <View style={styles.complete}>
-           <Button
-             onPress={() => markComplete(dbkey)}
-             title="✓"
-             color="#841584"
-             accessibilityLabel="Mark Complete"
-           />
+           <Icon
+            raised
+            name='check'
+            color='#336666'
+            onPress={() => markComplete(dbkey)}
+            />
          </View>
 
       </View>
