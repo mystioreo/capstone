@@ -90,10 +90,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-around',
-    margin: 15,
+    margin: 5,
     backgroundColor: '#fff',
     borderRadius: 5,
-    borderWidth: 0.5,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
     borderColor: '#d6d7da',
   },
   drinkcontainer: {
