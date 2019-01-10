@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 9,
-    color: '#A5A4A3'
+    color: '#252524'
   }
 });
 

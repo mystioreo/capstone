@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Alert, Picker, View, Button, StyleSheet, AsyncStorage } from 'react-native';
+import { Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import HTMLView from 'react-native-htmlview';
 
@@ -63,7 +63,7 @@ export default class SettingsScreen extends React.Component {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
             <Text style={styles.center}>Equipment</Text>
             <CheckBox
@@ -115,8 +115,8 @@ export default class SettingsScreen extends React.Component {
             />
 
 
-          <View style={styles.container}>
-            <Text style={styles.center}>Exercise Language (will not change existing exercises)</Text>
+          <View style={styles.languagecontainer}>
+            <Text style={styles.center}>Exercise Language</Text>
             <Picker
               selectedValue={this.state.language}
               style={styles.picker}
@@ -129,7 +129,7 @@ export default class SettingsScreen extends React.Component {
             <Button title="Log Out" onPress={this._signOutAsync} />
           </View>
 
-        </View>
+        </ScrollView>
       );
   }
 
@@ -144,6 +144,13 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
+  },
+  languagecontainer: {
+    flex: 1,
+    padding: 15,
+    backgroundColor: '#fff',
+  },
+  contentContainer: {
     justifyContent: 'flex-start',
   },
   center: {
@@ -151,6 +158,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   picker: {
+    flex: 1,
     margin: 0,
     position: 'absolute',
     height: 100,
@@ -158,7 +166,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   logout: {
-    padding: 15,
+    flex: 1,
+    marginTop: 120,
+    paddingBottom: 50,
+    paddingHorizontal: 50,
     alignSelf: 'flex-end',
   }
 });
