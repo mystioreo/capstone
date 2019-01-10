@@ -35,7 +35,7 @@ class Assignment extends Component {
     return (
 
       <View style={styles.container}>
-          <View>
+          <View style={styles.drink}>
             <Image
              style={{width: 30, height: 30}}
              source={drinks[drink]}
@@ -44,18 +44,21 @@ class Assignment extends Component {
             <Text> {Date.now() - date} </Text>
          </View>
 
-         <View>
+         <View style={styles.exercise}>
             <Text onPress={() => showDescriptionCallback(true, exercise.name, exercise.description)}>
               {exercise.name}
             </Text>
          </View>
 
-         <Button
-           onPress={() => markComplete(dbkey)}
-           title="✓"
-           color="#841584"
-           accessibilityLabel="Mark Complete"
-         />
+         <View style={styles.complete}>
+           <Button
+             onPress={() => markComplete(dbkey)}
+             title="✓"
+             color="#841584"
+             accessibilityLabel="Mark Complete"
+           />
+         </View>
+
       </View>
     );
   }
@@ -81,6 +84,20 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#d6d7da',
   },
+  drink: {
+    flex: 1,
+    padding: 5,
+  },
+  exercise: {
+    flex: 3,
+    padding: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  complete: {
+    flex: 1,
+    padding: 5,
+  }
 });
 
 export default Assignment;
