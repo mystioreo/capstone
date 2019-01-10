@@ -26,7 +26,7 @@ export default class SignInScreen extends React.Component {
          size={100}
          name='facebook-square'
          type='font-awesome'
-         color='#3366FF'
+         color='#3b5998'
          onPress={this._signInAsync}
          />
        <Text>Log in with Facebook</Text>
