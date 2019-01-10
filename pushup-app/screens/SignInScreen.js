@@ -5,10 +5,13 @@ import {
   View,
   Button,
   Alert,
+  Text,
 } from 'react-native';
 import * as Expo from 'expo';
 import * as firebase from 'firebase';
 import { REACT_APP_FACEBOOK_APP_ID} from 'react-native-dotenv';
+import { Icon } from 'react-native-elements'
+
 
 export default class SignInScreen extends React.Component {
   static navigationOptions = {
@@ -19,7 +22,14 @@ export default class SignInScreen extends React.Component {
     return (
       // add real facebook login icon here
       <View style={styles.container}>
-        <Button title="Log in with Facebook" onPress={this._signInAsync} />
+        <Icon
+         size={100}
+         name='facebook-square'
+         type='font-awesome'
+         color='#3366FF'
+         onPress={this._signInAsync}
+         />
+       <Text>Log in with Facebook</Text>
       </View>
     );
   }
@@ -85,7 +95,10 @@ export default class SignInScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingBottom: 100,
     backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
+
 });
