@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import * as firebase from 'firebase';
 import { AsyncStorage, Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements'
+import moment from 'moment';
 
 
 
@@ -38,13 +39,14 @@ class Assignment extends Component {
     return (
 
       <View style={styles.container}>
-          <View style={styles.drink}>
+          <View style={styles.drinkcontainer}>
+          <Text style={styles.date}> </Text>
             <Image
-             style={{width: 30, height: 30}}
+             style={styles.drink}
              source={drinks[drink]}
              accessibilityLabel={drink}
             />
-            <Text> {Date.now() - date} </Text>
+          <Text style={styles.date}> {moment(date).fromNow()}</Text>
          </View>
 
          <View style={styles.exercise}>
@@ -80,26 +82,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-around',
-    padding: 15,
     margin: 15,
     backgroundColor: '#fff',
-    borderRadius: 4,
+    borderRadius: 5,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
   },
+  drinkcontainer: {
+    flex: 2,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
   drink: {
-    flex: 1,
-    padding: 5,
+    height: 30,
+    width: 30,
   },
   exercise: {
-    flex: 3,
+    flex: 5,
     padding: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
   complete: {
-    flex: 1,
+    flex: 1.5,
     padding: 5,
+  },
+  date: {
+    fontSize: 9,
+    color: '#A5A4A3'
   }
 });
 

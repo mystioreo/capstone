@@ -5,7 +5,7 @@ import {
   View,
   Button,
   Alert,
-  Text,
+  Text
 } from 'react-native';
 import * as Expo from 'expo';
 import * as firebase from 'firebase';
@@ -29,7 +29,7 @@ export default class SignInScreen extends React.Component {
          color='#3b5998'
          onPress={this._signInAsync}
          />
-       <Text>Log in with Facebook</Text>
+       <Text>Sign in with Facebook</Text>
       </View>
     );
   }
