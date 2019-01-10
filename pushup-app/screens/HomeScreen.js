@@ -48,7 +48,7 @@ export default class HomeScreen extends React.Component {
   }
 
   static navigationOptions = {
-    header: null,
+    title: 'Six Pack',
   };
 
   render() {
@@ -146,12 +146,6 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.drinksContainer}>
-             <Image
-                source={ require('../assets/images/splash.png') }
-                style={styles.welcomeImage}
-              />
-          </View>
 
           <View style={styles.drinksContainer}>
 
