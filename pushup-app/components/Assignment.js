@@ -8,6 +8,14 @@ import moment from 'moment';
 
 
 class Assignment extends Component {
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({update: true}), 60000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
 
     const drinks = {
