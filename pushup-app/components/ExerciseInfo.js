@@ -7,48 +7,52 @@ import Equipment from './Equipment';
 class ExerciseInfo extends Component {
   constructor(props) {
     super(props)
+    this._isMounted = false;
     this.state = {
       exerciseImages: [],
     }
   }
 
-  render() {
+  componentDidMount() {
+    const getExerciseImages = async () => {
 
-  const { name, description, equipment, muscles, id } = { ...this.props.exercise };
+      try {
+        const response = await fetch(
+          'https://wger.de/api/v2/exerciseimage?exercise=' + this.props.exercise.id
+        );
+        const responseJson = await response.json();
+        const exerciseImages = [];
 
+        responseJson["results"].forEach((result, i) => {
+            exerciseImages.push(
+              <Image
+                key={i}
+                style={styles.stretch}
+                source={{uri: result["image"]}}
+                accessibilityLabel={this.props.exercise.name}
+              />
+            );
+        })
+          this.setState({exerciseImages});
+      } catch (error) {
+        Alert.alert(`Exercise Database error: ${error}`);
+      }
 
-  const getExerciseImages = async () => {
-
-    try {
-      const response = await fetch(
-        'https://wger.de/api/v2/exerciseimage?exercise=' + id
-      );
-      const responseJson = await response.json();
-      const exerciseImages = [];
-
-      responseJson["results"].forEach((result, i) => {
-          exerciseImages.push(
-            <Image
-              key={i}
-              style={styles.stretch}
-              source={{uri: result["image"]}}
-              accessibilityLabel={name}
-            />
-          );
-      })
-        this.setState({exerciseImages});
-    } catch (error) {
-      Alert.alert(`Exercise Database error: ${error}`);
     }
 
+    getExerciseImages();
   }
 
-  getExerciseImages();
+
+
+  render() {
+
+  const { name, description, equipment, muscles, } = { ...this.props.exercise };
 
     return (
       <ScrollView>
         <View>
-          <Text style={styles.title}>{name}{this.props.exercise.id}</Text>
+          <Text style={styles.title}>{name}</Text>
         </View>
         <Equipment equipment={equipment} />
         <Text style={styles.intro}> Unless otherwise specified, one set is 10 repetitions or a 30-second hold. </Text>
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   description: {
-    margin: 30,
+    margin: 50,
   },
   stretch: {
     flex: 1,
