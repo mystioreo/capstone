@@ -58,7 +58,7 @@ class Assignment extends Component {
          </View>
 
          <View style={styles.exercise}>
-            <Text onPress={() => showDescriptionCallback(true, exercise.name, exercise.description)}>
+            <Text onPress={() => showDescriptionCallback(true, exercise)}>
               {exercise.name}
             </Text>
          </View>

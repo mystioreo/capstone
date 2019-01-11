@@ -13,7 +13,6 @@ import {
   Modal,
 } from 'react-native';
 
-import HTMLView from 'react-native-htmlview';
 
 
 import { MonoText } from '../components/StyledText';
@@ -21,6 +20,7 @@ import { MonoText } from '../components/StyledText';
 import * as firebase from 'firebase';
 
 import Assignment from '../components/Assignment';
+import ExerciseInfo from '../components/ExerciseInfo';
 
 export default class HomeScreen extends React.Component {
 
@@ -29,8 +29,7 @@ export default class HomeScreen extends React.Component {
     this.state = {
       assignments: [],
       modalVisible: false,
-      modalTitle: "",
-      modalDescription: "",
+      modalExercise: {},
     }
   }
 
@@ -138,8 +137,8 @@ export default class HomeScreen extends React.Component {
         )
     })}}
 
-    const showDescription = (visible, title, description) => {
-      this.setState({modalVisible: visible, modalTitle: title, modalDescription: description });
+    const showDescription = (visible, exercise) => {
+      this.setState({modalVisible: visible, modalExercise: exercise});
     }
 
 
@@ -191,30 +190,27 @@ export default class HomeScreen extends React.Component {
 
           </View>
 
-          <View>
+          <ScrollView>
             <Modal
               animationType="slide"
               transparent={false}
               visible={this.state.modalVisible}
               >
               <View style={{marginTop: 100}}>
-                <View>
-                  <Text>{this.state.modalTitle}</Text>
-                  <HTMLView
-                    value={this.state.modalDescription}
-                  />
+                <ScrollView>
+                  <ExerciseInfo exercise={this.state.modalExercise} />
 
                   <TouchableHighlight
                     onPress={() => {
                       showDescription(false);
                     }}>
-                    <Text>Close</Text>
+                    <Text style={styles.center}>Close</Text>
                   </TouchableHighlight>
-                </View>
+                </ScrollView>
               </View>
             </Modal>
             {populateAssignments()}
-          </View>
+          </ScrollView>
       </ScrollView>
     </View>
   )
@@ -313,4 +309,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
+  center: {
+    color: '#2e78b7',
+    alignSelf: 'center',
+    margin: 30,
+  }
 });
