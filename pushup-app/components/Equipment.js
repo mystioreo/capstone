@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Image, View, Text, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
 
 class Equipment extends Component {
 

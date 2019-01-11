@@ -17,6 +17,7 @@ class ExerciseInfo extends Component {
           <Text style={styles.title}>{name}</Text>
         </View>
         <Equipment equipment={equipment} />
+        <Text style={styles.intro}> Unless otherwise specified, one set is 10 repetitions or a 30-second hold. </Text>
         <View style={styles.description}>
           <HTMLView
             value={description}
@@ -46,6 +47,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 20,
 
+  },
+  intro: {
+    textAlign: 'center',
+    fontSize: 16,
+    marginLeft: 30,
+    marginRight: 30,
+    marginBottom: 30,
   },
   description: {
     margin: 30,
