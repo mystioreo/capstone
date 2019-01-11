@@ -1,25 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import * as firebase from 'firebase';
-import { AsyncStorage, Alert, View, ScrollView, Image, Button, Text, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-elements'
-import moment from 'moment';
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
 import HTMLView from 'react-native-htmlview';
-
-
+import Equipment from './Equipment';
 
 class ExerciseInfo extends Component {
 
 
   render() {
 
-  const { name, description } = { ...this.props.exercise };
+  const { name, description, equipment, muscles } = { ...this.props.exercise };
 
     return (
       <ScrollView>
         <View>
           <Text style={styles.title}>{name}</Text>
         </View>
+        <Equipment equipment={equipment} />
         <View style={styles.description}>
           <HTMLView
             value={description}
