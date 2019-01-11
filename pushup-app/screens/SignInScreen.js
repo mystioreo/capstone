@@ -3,9 +3,9 @@ import {
   AsyncStorage,
   StyleSheet,
   View,
-  Button,
   Alert,
-  Text
+  Text,
+  TouchableOpacity,
 } from 'react-native';
 import * as Expo from 'expo';
 import * as firebase from 'firebase';
@@ -20,16 +20,19 @@ export default class SignInScreen extends React.Component {
 
   render() {
     return (
-      // add real facebook login icon here
-      <View style={styles.container}>
-        <Icon
-         size={100}
-         name='facebook-square'
-         type='font-awesome'
-         color='#3b5998'
-         onPress={this._signInAsync}
-         />
-       <Text>Sign in with Facebook</Text>
+      <View style={styles.outerContainer}>
+        <TouchableOpacity onPress={this._signInAsync}>
+          <View style={styles.container}  >
+            <Icon
+             size={100}
+             name='facebook-square'
+             type='font-awesome'
+             color='#3b5998'
+             />
+           <Text style={styles.text}>Sign in with Facebook</Text>
+          </View>
+        </TouchableOpacity>
+
       </View>
     );
   }
@@ -93,12 +96,24 @@ export default class SignInScreen extends React.Component {
   }
 
 const styles = StyleSheet.create({
-  container: {
+  outerContainer: {
     flex: 1,
-    paddingBottom: 100,
+    justifyContent: 'center',
+  },
+  container: {
+    borderRadius: 15,
+    borderColor: '#000',
+    borderWidth: 2,
+    flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    margin: 10,
+    marginBottom: 50,
+
   },
+  text: {
+    margin: 20,
+  }
 
 });

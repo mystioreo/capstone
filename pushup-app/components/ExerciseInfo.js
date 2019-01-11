@@ -25,9 +25,6 @@ class ExerciseInfo extends Component {
         </View>
       </ScrollView>
 
-
-
-
     );
   }
 }

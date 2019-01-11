@@ -39,6 +39,9 @@ export default class SettingsScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Settings',
+    headerStyle: {
+          backgroundColor: '#429485'
+        },
   };
 
   render() {
@@ -69,48 +72,56 @@ export default class SettingsScreen extends React.Component {
             <CheckBox
               title='Barbell'
               checked={this.state.barbell === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('barbell')}
             />
 
             <CheckBox
               title='SZ-bar'
               checked={this.state.szbar === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('szbar')}
             />
 
             <CheckBox
               title='Dumbbell'
               checked={this.state.dumbbell === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('dumbbell')}
             />
 
             <CheckBox
               title='Swiss Ball'
               checked={this.state.swissball === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('swissball')}
             />
 
             <CheckBox
               title='Pull-up Bar'
               checked={this.state.pullupbar === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('pullupbar')}
             />
 
             <CheckBox
               title='Bench'
               checked={this.state.bench === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('bench')}
             />
 
             <CheckBox
               title='Incline Bench'
               checked={this.state.inclinebench === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('inclinebench')}
             />
 
             <CheckBox
               title='Kettlebell'
               checked={this.state.kettlebell === "true" ? true : false}
+              checkedColor='#429485'
               onPress={() => changeSettings('kettlebell')}
             />
 
@@ -126,7 +137,7 @@ export default class SettingsScreen extends React.Component {
             </Picker>
           </View>
           <View style={styles.logout}>
-            <Button title="Log Out" onPress={this._signOutAsync} />
+            <Button title="Log Out" onPress={this._signOutAsync} color='#429485' />
           </View>
 
         </ScrollView>

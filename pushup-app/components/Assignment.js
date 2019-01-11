@@ -67,7 +67,7 @@ class Assignment extends Component {
            <Icon
             raised
             name='check'
-            color='#336666'
+            color='#429485'
             onPress={() => markComplete(dbkey)}
             />
          </View>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     margin: 5,
     backgroundColor: '#fff',
-    borderRadius: 5,
+    borderRadius: 15,
     borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
     borderColor: '#d6d7da',

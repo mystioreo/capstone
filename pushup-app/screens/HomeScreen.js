@@ -48,6 +48,10 @@ export default class HomeScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Six Pack',
+    headerStyle: {
+          backgroundColor: '#429485'
+        },
+
   };
 
   render() {
@@ -220,11 +224,12 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#E4ECE5',
     paddingTop: 30,
   },
   contentContainer: {
     paddingTop: 30,
+
   },
   drinksContainer: {
     flexDirection: 'row',
@@ -251,7 +256,6 @@ const styles = StyleSheet.create({
       },
     }),
     alignItems: 'center',
-    backgroundColor: '#fbfbfb',
     paddingVertical: 20,
   },
   tabBarInfoText: {
@@ -277,5 +281,6 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
     alignSelf: 'center',
     margin: 30,
+
   }
 });
