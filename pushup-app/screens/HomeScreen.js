@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
   center: {
-    color: '#2e78b7',
+    color: '#EF4436',
     alignSelf: 'center',
     margin: 30,
 
