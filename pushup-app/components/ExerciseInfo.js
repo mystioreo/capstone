@@ -61,6 +61,7 @@ class ExerciseInfo extends Component {
         <View style={styles.detailsContainer}>
           <View style={styles.description}>
             <HTMLView
+              addLineBreaks={false}
               value={description}
               stylesheet={styles}
             />
