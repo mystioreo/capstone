@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import * as firebase from 'firebase';
-import { AsyncStorage, Alert, View, Image, Button, Text, StyleSheet } from 'react-native';
+import { Animated, Easing, AsyncStorage, Alert, View, Image, Text, StyleSheet, Dimensions } from 'react-native';
 import { Icon } from 'react-native-elements'
 import moment from 'moment';
+const { width, height } = Dimensions.get('window');
 
 
 
 class Assignment extends Component {
+  constructor(props) {
+    super(props)
+    this.state= {
+      xValue: new Animated.Value(0),
+    }
+  }
   componentDidMount() {
     this.interval = setInterval(() => this.setState({update: true}), 60000);
   }
@@ -26,28 +33,41 @@ class Assignment extends Component {
       cocktail: require('../assets/images/cocktail.png'),
     }
 
+    const _moveAnimation = () => {
+      Animated.timing(this.state.xValue, {
+        toValue: -width,
+        duration: 500,
+        easing: Easing.linear,
+      }).start();
+    }
+
     async function markComplete(key) {
+      _moveAnimation();
       const userID = await AsyncStorage.getItem('userID');
-      if (userID != null) {
-        firebase.database().ref('users/' + userID + '/assignments/' + key).update(
-          {
-            complete: true,
-          }
-        ).then(() => {
-            console.log(`assignment complete`);
-          }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
-        });
-      } else {
-        Alert.alert("There was an error.  Please log out, log back in, and try again!");
-      }
+
+      setTimeout( () => {
+        if (userID != null) {
+          firebase.database().ref('users/' + userID + '/assignments/' + key).update(
+            {
+              complete: true,
+            }
+          ).then(() => {
+              console.log(`assignment complete`);
+            }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
+          });
+        } else {
+          Alert.alert("There was an error.  Please log out, log back in, and try again!");
+        }
+      },505)
+
     }
 
     const {drink, exercise, date, showDescriptionCallback, dbkey} = { ...this.props };
 
     return (
 
-      <View style={styles.container}>
-          <View style={styles.drinkcontainer}>
+      <Animated.View style={[styles.container, {left: this.state.xValue}]}>
+        <View style={styles.drinkcontainer}>
           <Text style={styles.date}> </Text>
             <Image
              style={styles.drink}
@@ -71,8 +91,8 @@ class Assignment extends Component {
             onPress={() => markComplete(dbkey)}
             />
          </View>
+       </Animated.View>
 
-      </View>
     );
   }
 }
@@ -91,7 +111,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     margin: 5,
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
     borderRadius: 15,
     borderTopWidth: 0.5,
     borderBottomWidth: 0.5,
@@ -120,7 +140,7 @@ const styles = StyleSheet.create({
     fontSize: 9,
     color: '#252524',
     textAlign: 'center',
-  }
+  },
 });
 
 export default Assignment;

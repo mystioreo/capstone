@@ -131,7 +131,7 @@ export default class HomeScreen extends React.Component {
 
         return (
           <Assignment
-            key={keyIndex}
+            key={date}
             dbkey={keyName}
             drink={drink}
             exercise={exercise}
