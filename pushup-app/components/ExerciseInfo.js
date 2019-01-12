@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   description: {
-    margin: 50,
+    margin: 30,
   },
   stretch: {
     flex: 1,

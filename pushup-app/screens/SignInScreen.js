@@ -102,10 +102,10 @@ const styles = StyleSheet.create({
   },
   container: {
     borderRadius: 15,
-    borderColor: '#000',
+    borderColor: '#429485',
     borderWidth: 2,
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#E4ECE5',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
