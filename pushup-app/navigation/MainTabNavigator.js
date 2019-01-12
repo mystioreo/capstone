@@ -1,17 +1,23 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import StyledText from '../components/StyledText';
+import Colors from '../constants/Colors';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: ({ focused }) => (
+    <Text style={focused ? {color: Colors.tabIconSelected} : {color: Colors.tabIconDefault}}>
+      Home
+    </Text>
+  ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -29,7 +35,11 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: ({ focused }) => (
+    <Text style={focused ? {color: Colors.tabIconSelected} : {color: Colors.tabIconDefault}}>
+      Settings
+    </Text>
+  ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
