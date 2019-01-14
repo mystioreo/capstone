@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
+import { Linking, Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import HTMLView from 'react-native-htmlview';
 
@@ -64,6 +64,7 @@ export default class SettingsScreen extends React.Component {
           Alert.alert("There was an error saving your settings.  Please try again.")
       }
     }
+
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -136,9 +137,15 @@ export default class SettingsScreen extends React.Component {
               <Picker.Item label="English" value="2" />
             </Picker>
           </View>
+
+          <View>
+
           <View style={styles.logout}>
-            <Button title="Log Out" onPress={this._signOutAsync} color='#429485' />
+            <Button title="Log Out of Six Pack" onPress={this._signOutAsync} color='#429485' />
           </View>
+
+          </View>
+
 
         </ScrollView>
       );
@@ -181,6 +188,6 @@ const styles = StyleSheet.create({
     marginTop: 120,
     paddingBottom: 50,
     paddingHorizontal: 50,
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
   }
 });
