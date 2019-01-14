@@ -37,7 +37,7 @@ class Assignment extends Component {
       Animated.timing(this.state.xValue, {
         toValue: -width,
         duration: 500,
-        easing: Easing.linear,
+        easing: Easing.cubic,
       }).start();
     }
 
