@@ -77,7 +77,7 @@ export default class SignInScreen extends React.Component {
                     } catch (error) {
                       Alert.alert(`Error loading settings: ${error}`)
                     }
-                    this.props.navigation.navigate('App');
+                    this.props.navigation.navigate('Intro');
                   }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
                 });
               }
