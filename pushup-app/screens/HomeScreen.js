@@ -137,7 +137,16 @@ export default class HomeScreen extends React.Component {
             showDescriptionCallback={showDescription}
           />
         )
-    })}}
+      })} else {
+        return (
+            <Image
+              style={{width: 200, height: 200, marginTop: 200, alignSelf: 'center'}}
+              source={require('../assets/images/kitty.png')}
+              accessibilityLabel="Cat with Bottle"
+            />
+        )
+      }
+  }
 
     const showDescription = (visible, exercise) => {
       this.setState({modalVisible: visible, modalExercise: exercise});
