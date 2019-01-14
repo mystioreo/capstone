@@ -278,9 +278,10 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
   center: {
-    color: '#EF4436',
+    color: '#429485',
     alignSelf: 'center',
     margin: 30,
+    fontSize: 18,
 
   }
 });

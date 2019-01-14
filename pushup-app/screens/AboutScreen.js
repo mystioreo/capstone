@@ -1,7 +1,5 @@
 import React from 'react';
-import { Linking, Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
-import { CheckBox } from 'react-native-elements';
-import HTMLView from 'react-native-htmlview';
+import { Linking, Text, ScrollView, StyleSheet } from 'react-native';
 
 export default class AboutScreen extends React.Component {
   render () {
@@ -32,7 +30,7 @@ export default class AboutScreen extends React.Component {
 
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text style={styles.title}>
           {`Six Pack \n\n`}
         </Text>
@@ -61,7 +59,7 @@ export default class AboutScreen extends React.Component {
               {`\n        Creative Commons BY 3.0 \n\n`}
             </Text>
         </Text>
-      </View>
+      </ScrollView>
     )
   }
 }
