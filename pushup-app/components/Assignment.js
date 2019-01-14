@@ -51,9 +51,7 @@ class Assignment extends Component {
             {
               complete: true,
             }
-          ).then(() => {
-              console.log(`assignment complete`);
-            }).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
+          ).catch((error) => {Alert.alert(`Firebase Database error: ${error}`);
           });
         } else {
           Alert.alert("There was an error.  Please log out, log back in, and try again!");

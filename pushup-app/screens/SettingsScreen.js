@@ -28,8 +28,6 @@ export default class SettingsScreen extends React.Component {
         this.setState({
           [setting[0]]: setting[1],
         });
-        console.log(setting[0]);
-        console.log(setting[1]);
       })
 
     }
