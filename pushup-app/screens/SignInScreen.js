@@ -69,7 +69,7 @@ export default class SignInScreen extends React.Component {
                     name: name,
                   }
                 ).then(() => {
-                    Alert.alert(`Logged in as ${name}!`);
+                    Alert.alert(`Welcome to your Six Pack, ${name}!`);
                     try {
                       AsyncStorage.multiSet([["barbell", "false"], ["szbar", "false"],
                       ["dumbbell", "false"], ["swissball", "false"], ["pullupbar", "false"], ["bench", "false"],

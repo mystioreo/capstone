@@ -30,6 +30,7 @@ class ExerciseInfo extends Component {
                 style={styles.stretch}
                 source={{uri: result["image"]}}
                 accessibilityLabel={this.props.exercise.name}
+                resizeMode='contain'
               />
             );
         })
@@ -118,8 +119,8 @@ const styles = StyleSheet.create({
   },
   stretch: {
     flex: 1,
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
   },
   center: {
     alignItems: 'center',
