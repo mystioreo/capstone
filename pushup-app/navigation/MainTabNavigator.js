@@ -6,7 +6,6 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import AboutScreen from '../screens/AboutScreen';
-import StyledText from '../components/StyledText';
 import Colors from '../constants/Colors';
 
 const HomeStack = createStackNavigator({
@@ -15,7 +14,7 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: ({ focused }) => (
-    <Text style={focused ? {color: Colors.tabIconSelected} : {color: Colors.tabIconDefault}}>
+    <Text style={focused ? {alignSelf: 'center', color: Colors.tabIconSelected} : {alignSelf: 'center', color: Colors.tabIconDefault}}>
       Home
     </Text>
   ),
@@ -37,7 +36,7 @@ const SettingsStack = createStackNavigator({
 
 SettingsStack.navigationOptions = {
   tabBarLabel: ({ focused }) => (
-    <Text style={focused ? {color: Colors.tabIconSelected} : {color: Colors.tabIconDefault}}>
+    <Text style={focused ? {alignSelf: 'center', color: Colors.tabIconSelected} : {alignSelf: 'center', color: Colors.tabIconDefault}}>
       Settings
     </Text>
   ),
@@ -55,7 +54,7 @@ const AboutStack = createStackNavigator({
 
 AboutStack.navigationOptions = {
   tabBarLabel: ({ focused }) => (
-    <Text style={focused ? {color: Colors.tabIconSelected} : {color: Colors.tabIconDefault}}>
+    <Text style={focused ? {alignSelf: 'center', color: Colors.tabIconSelected} : {alignSelf: 'center', color: Colors.tabIconDefault}}>
       About
     </Text>
   ),
