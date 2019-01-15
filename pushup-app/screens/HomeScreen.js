@@ -205,6 +205,7 @@ export default class HomeScreen extends React.Component {
               animationType="slide"
               transparent={false}
               visible={this.state.modalVisible}
+              onRequestClose={() => {showDescription(false);}}
               >
               <View style={{marginTop: 100}}>
                 <ScrollView>
