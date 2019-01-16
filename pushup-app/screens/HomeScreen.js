@@ -31,6 +31,7 @@ export default class HomeScreen extends React.Component {
       assignments: [],
       modalVisible: false,
       modalExercise: {},
+      expert: false,
     }
   }
 
@@ -58,6 +59,7 @@ export default class HomeScreen extends React.Component {
   render() {
     async function createAssignment(drink, exercise) {
       const userID = await AsyncStorage.getItem('userID');
+
       if (userID != null) {
         firebase.database().ref('users/' + userID + '/assignments/').push(
           {
@@ -73,53 +75,76 @@ export default class HomeScreen extends React.Component {
       }
     }
 
+    async function getExercisefromDatabase(drink) {
+        console.log(drink);
+    }
+
     async function getExerciseFromApi(drink) {
-      try {
-        const language = await AsyncStorage.getItem('language');
-        const response = await fetch(
-          'https://wger.de/api/v2/exercise?language=' + language + '&status=2&limit=100'
-        );
-        const responseJson = await response.json();
-        const invalidEquipmentList = [];
-        const equipmentNumbers = {"barbell": 1, "szbar": 2, "dumbbell": 3, "swissball": 5,
-                                  "pullupbar": 6, "bench": 8, "inclinebench": 9, "kettlebell": 10};
+      let expert = await AsyncStorage.getItem('expert');
+      expert = expert === "true" ? true : false;
+      console.log(expert);
 
-        await AsyncStorage.multiGet(['barbell','szbar', 'dumbbell', 'swissball',
-                            'pullupbar', 'bench', 'inclinebench', 'kettlebell'],
-                            (err, stores) => {
-                              stores.map((result, i, store) => {
-                                // get at each store's key/value so you can work with it
-                                const key = store[i][0];
-                                const value = store[i][1];
+      if (!expert) {
+        getExercisefromDatabase(drink);
 
-                                if (value === "false") {
-                                  invalidEquipmentList.push(equipmentNumbers[key]);
-                                }
+      } else {
+        try {
+          const language = await AsyncStorage.getItem('language');
+          const response = await fetch(
+            'https://wger.de/api/v2/exercise?language=' + language + '&status=2&limit=100'
+          );
+          const responseJson = await response.json();
+          const invalidEquipmentList = [];
+          const equipmentNumbers = {"barbell": 1, "szbar": 2, "dumbbell": 3, "swissball": 5,
+                                    "pullupbar": 6, "bench": 8, "inclinebench": 9, "kettlebell": 10};
+
+          await AsyncStorage.multiGet(['barbell','szbar', 'dumbbell', 'swissball',
+                              'pullupbar', 'bench', 'inclinebench', 'kettlebell'],
+                              (err, stores) => {
+                                stores.map((result, i, store) => {
+                                  // get at each store's key/value so you can work with it
+                                  const key = store[i][0];
+                                  const value = store[i][1];
+
+                                  if (value === "false") {
+                                    invalidEquipmentList.push(equipmentNumbers[key]);
+                                  }
+                                });
                               });
-                            });
 
-        const possibleExercises = [];
-        responseJson.results.forEach((result) => {
-          let valid = true;
-          if (result.equipment.length === 0) {
-            valid = false;
-          } else {
-          invalidEquipmentList.forEach((equipment) => {
-            if (result.equipment.includes(equipment)) {
+          const possibleExercises = [];
+          responseJson.results.forEach((result) => {
+            let valid = true;
+            if (result.equipment.length === 0) {
               valid = false;
+            } else {
+            invalidEquipmentList.forEach((equipment) => {
+              if (result.equipment.includes(equipment)) {
+                valid = false;
+              }
+            })}
+            if (valid === true) {
+              possibleExercises.push(result);
             }
-          })}
-          if (valid === true) {
-            possibleExercises.push(result);
-          }
-        })
+          })
 
-        const exercise = possibleExercises[Math.floor(Math.random() * possibleExercises.length)];
-        createAssignment(drink, exercise);
+          const exercise = possibleExercises[Math.floor(Math.random() * possibleExercises.length)];
+          createAssignment(drink, exercise);
 
-      } catch (error) {
-        Alert.alert(`Exercise Database error: ${error}`);
+        } catch (error) {
+          Alert.alert(`Exercise Database error: ${error}`);
+        }
+
+
+
+
       }
+
+
+
+
+
+
     }
 
     const populateAssignments = () => {
