@@ -21,6 +21,7 @@ import * as firebase from 'firebase';
 
 import Assignment from '../components/Assignment';
 import ExerciseInfo from '../components/ExerciseInfo';
+import ExerciseVideo from '../components/ExerciseVideo';
 
 export default class HomeScreen extends React.Component {
 
@@ -207,8 +208,13 @@ export default class HomeScreen extends React.Component {
               visible={this.state.modalVisible}
               onRequestClose={() => {showDescription(false);}}
               >
+
+
+
               <View style={{marginTop: 100}}>
+
                 <ScrollView>
+                  <ExerciseVideo />
                   <ExerciseInfo exercise={this.state.modalExercise} />
 
                   <TouchableHighlight
