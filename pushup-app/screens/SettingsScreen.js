@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linking, Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage } from 'react-native';
+import { Linking, Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage, Switch } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import HTMLView from 'react-native-htmlview';
 
@@ -16,14 +16,15 @@ export default class SettingsScreen extends React.Component {
       pullupbar: false,
       bench: false,
       inclinebench: false,
-      kettlebell: false
+      kettlebell: false,
+      expert: false,
     }
   }
 
   componentDidMount() {
     const getSettings = async () => {
       const userSettings = await AsyncStorage.multiGet(['barbell','szbar', 'dumbbell', 'swissball',
-                                                        'pullupbar', 'bench', 'inclinebench', 'kettlebell']);
+                                                        'pullupbar', 'bench', 'inclinebench', 'kettlebell', 'expert']);
       userSettings.forEach( (setting) => {
         this.setState({
           [setting[0]]: setting[1],
@@ -66,8 +67,19 @@ export default class SettingsScreen extends React.Component {
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <View style={styles.switch}>
+            <Text style={styles.toggle}>Beginner Mode</Text>
+            <Switch
+              onValueChange={() => changeSettings('expert')}
+              value={this.state.expert === "true" ? true : false}
+            />
+          <Text style={styles.toggle}>Expert Mode</Text>
+          </View>
 
-            <Text style={styles.center}>Equipment</Text>
+
+        { this.state.expert === "true" &&
+          <View>
+            <Text style={styles.center}>Equipment Settings</Text>
             <CheckBox
               title='Barbell'
               checked={this.state.barbell === "true" ? true : false}
@@ -136,6 +148,8 @@ export default class SettingsScreen extends React.Component {
             </Picker>
           </View>
 
+        </View>
+        }
           <View>
 
           <View style={styles.logout}>
@@ -183,9 +197,29 @@ const styles = StyleSheet.create({
   },
   logout: {
     flex: 1,
-    marginTop: 120,
-    paddingBottom: 50,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#429485',
+    marginTop: 100,
+    paddingTop: 20,
+    paddingBottom: 20,
+    marginBottom: 30,
     paddingHorizontal: 50,
     alignSelf: 'center',
+  },
+  switch: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#429485',
+    paddingTop: 20,
+    marginTop: 30,
+    paddingBottom: 20,
+    marginBottom: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  toggle: {
+    fontSize: 16,
   }
 });

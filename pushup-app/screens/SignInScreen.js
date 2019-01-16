@@ -71,7 +71,7 @@ export default class SignInScreen extends React.Component {
                 ).then(() => {
                     Alert.alert(`Welcome to your Six Pack, ${name}!`);
                     try {
-                      AsyncStorage.multiSet([["barbell", "false"], ["szbar", "false"],
+                      AsyncStorage.multiSet([["expert", "false"], ["barbell", "false"], ["szbar", "false"],
                       ["dumbbell", "false"], ["swissball", "false"], ["pullupbar", "false"], ["bench", "false"],
                       ["inclinebench", "false"], ["kettlebell", "false"], ["language", "2"]]);
                     } catch (error) {

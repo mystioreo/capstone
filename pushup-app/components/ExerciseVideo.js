@@ -30,9 +30,9 @@ class ExerciseVideo extends React.Component {
       return (
         <View style={styles.container}>
           <View>
-            <Text style={{ textAlign: 'center' }}> React Native Video </Text>
+            <Text style={{ textAlign: 'center' }}>{this.props.exercise.name}</Text>
             <Video
-                source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+                source={{ uri: 'https://www.cdc.gov/physicalactivity/videos/Superman_Ipod-Lg.mp4' }}
                 shouldPlay={this.state.shouldPlay}
                 resizeMode="cover"
                 style={{ width, height: 300 }}

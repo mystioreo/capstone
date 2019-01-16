@@ -214,9 +214,9 @@ export default class HomeScreen extends React.Component {
               <View style={{marginTop: 100}}>
 
                 <ScrollView>
-                  <ExerciseVideo />
-                  <ExerciseInfo exercise={this.state.modalExercise} />
 
+                  <ExerciseInfo exercise={this.state.modalExercise} />
+                  <ExerciseVideo exercise={this.state.modalExercise}/>
                   <TouchableHighlight
                     onPress={() => {
                       showDescription(false);
