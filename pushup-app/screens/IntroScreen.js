@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-const { width, height } = Dimensions.get('window');
 
 
 const styles = StyleSheet.create({
@@ -15,7 +14,6 @@ const slides = [
   {
     key: 'screen1',
     title: 'Add a drink to your list',
-    text: 'Drink',
     image: require('../assets/images/drinkscreen.png'),
     imageStyle: styles.image,
     backgroundColor: '#429485',
@@ -23,7 +21,6 @@ const slides = [
   {
     key: 'screen2',
     title: 'Get exercise details',
-    text: 'Exercise',
     image: require('../assets/images/exercisescreen.png'),
     imageStyle: styles.image,
     backgroundColor: '#C9A991',
@@ -31,7 +28,6 @@ const slides = [
   {
     key: 'screen3',
     title: 'Customize your workout',
-    text: 'Customize',
     image: require('../assets/images/equipmentscreen.png'),
     imageStyle: styles.image,
     backgroundColor: '#DA859A',

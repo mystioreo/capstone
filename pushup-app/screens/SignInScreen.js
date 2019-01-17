@@ -42,9 +42,6 @@ export default class SignInScreen extends React.Component {
         const {
           type,
           token,
-          expires,
-          permissions,
-          declinedPermissions,
         } = await Expo.Facebook.logInWithReadPermissionsAsync(REACT_APP_FACEBOOK_APP_ID, {
           permissions: ['public_profile','email'],
         });
@@ -102,10 +99,10 @@ const styles = StyleSheet.create({
   },
   container: {
     borderRadius: 15,
-    borderColor: '#429485',
+    borderColor: '#3b5998',
     borderWidth: 2,
     flexDirection: 'row',
-    backgroundColor: '#E4ECE5',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,

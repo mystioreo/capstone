@@ -13,15 +13,10 @@ import {
   Modal,
 } from 'react-native';
 
-
-
-import { MonoText } from '../components/StyledText';
-
 import * as firebase from 'firebase';
 
 import Assignment from '../components/Assignment';
 import ExerciseInfo from '../components/ExerciseInfo';
-import ExerciseVideo from '../components/ExerciseVideo';
 
 export default class HomeScreen extends React.Component {
 
@@ -163,7 +158,7 @@ export default class HomeScreen extends React.Component {
     const populateAssignments = () => {
       const assignments = this.state.assignments;
       if (assignments) {
-      return Object.keys(assignments).map( (keyName, keyIndex) => {
+      return Object.keys(assignments).map( (keyName) => {
         const {drink, exercise, date} = { ...assignments[keyName] };
 
         return (

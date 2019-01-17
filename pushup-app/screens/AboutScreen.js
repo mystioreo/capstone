@@ -8,6 +8,9 @@ export default class AboutScreen extends React.Component {
       Linking.openURL('https://github.com/mystioreo')
     }
 
+    const cdcLink = () => {
+      Linking.openURL('https://www.cdc.gov/physicalactivity/basics/videos/index.htm')
+    }
     const wgerLink = () => {
       Linking.openURL('https://wger.de/en/')
     }
@@ -39,7 +42,11 @@ export default class AboutScreen extends React.Component {
             <Text style={styles.link} onPress={githubLink}>
               {`\n        mystioreo \n\n\n\n`}
           </Text>
-          {`Exercise data courtesy of: \n`}
+          {`Beginner Exercise data courtesy of: \n`}
+            <Text style={styles.link} onPress={cdcLink}>
+              {`\n        Centers for Disease Control and Prevention \n\n\n\n`}
+            </Text>
+          {`Expert Exercise data courtesy of: \n`}
             <Text style={styles.link} onPress={wgerLink}>
               {`\n        wger | Workout Manager \n\n\n\n`}
             </Text>

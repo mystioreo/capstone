@@ -1,12 +1,12 @@
 import React from 'react';
-import { Alert, Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import * as Expo from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import * as firebase from 'firebase';
 import { REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN,
         REACT_APP_DATABASE_URL, REACT_APP_STORAGE_BUCKET,
-        REACT_APP_FACEBOOK_APP_ID} from 'react-native-dotenv';
+        } from 'react-native-dotenv';
 
 
 export default class App extends React.Component {
@@ -63,9 +63,7 @@ export default class App extends React.Component {
       Font.loadAsync({
         // This is the font that we are using for our tab bar
         ...Icon.Ionicons.font,
-        // We include SpaceMono because we use it in HomeScreen.js. Feel free
-        // to remove this if you are not using it in your app
-        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+  
       }),
     ]);
   };

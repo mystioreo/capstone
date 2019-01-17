@@ -1,9 +1,9 @@
 
 import React from 'react';
 import PropTypes from "prop-types";
-import { Platform, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { Audio, Video } from 'expo';
-import { MaterialIcons, Octicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 class ExerciseVideo extends React.Component {
   state = {

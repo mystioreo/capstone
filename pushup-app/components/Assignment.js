@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import { Animated, Easing, AsyncStorage, Alert, View, Image, Text, StyleSheet, Dimensions } from 'react-native';
 import { Icon } from 'react-native-elements'
 import moment from 'moment';
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 
 
