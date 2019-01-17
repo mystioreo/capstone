@@ -63,7 +63,7 @@ export default class App extends React.Component {
       Font.loadAsync({
         // This is the font that we are using for our tab bar
         ...Icon.Ionicons.font,
-  
+
       }),
     ]);
   };
