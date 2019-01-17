@@ -9,7 +9,7 @@ class ExerciseVideo extends React.Component {
   state = {
       mute: false,
       fullScreen: false,
-      shouldPlay: true,
+      shouldPlay: false,
   }
   async componentDidMount() {
         await Audio.setAudioModeAsync({
@@ -59,13 +59,13 @@ class ExerciseVideo extends React.Component {
               <MaterialIcons
                 name={this.state.shouldPlay ? "pause" : "play-arrow"}
                 size={45}
-                color="#c9a991"
+                color="#E4ECE5"
                 onPress={this.handlePlayAndPause}
               />
               <MaterialIcons
                 name={this.state.mute ? "volume-mute" : "volume-up"}
                 size={45}
-                color="#c9a991"
+                color="#E4ECE5"
                 onPress={this.handleVolume}
               />
           </View>
