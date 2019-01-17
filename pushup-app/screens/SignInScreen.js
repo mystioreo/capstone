@@ -6,6 +6,7 @@ import {
   Alert,
   Text,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import * as Expo from 'expo';
 import * as firebase from 'firebase';
@@ -32,7 +33,11 @@ export default class SignInScreen extends React.Component {
            <Text style={styles.text}>Sign in with Facebook</Text>
           </View>
         </TouchableOpacity>
-
+        <Image
+          style={{width: 200, height: 200, alignSelf: 'center'}}
+          source={require('../assets/images/kitty.png')}
+          accessibilityLabel="Cat with Bottle"
+        />
       </View>
     );
   }

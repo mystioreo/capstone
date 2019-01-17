@@ -142,17 +142,7 @@ export default class HomeScreen extends React.Component {
         } catch (error) {
           Alert.alert(`Exercise Database error: ${error}`);
         }
-
-
-
-
       }
-
-
-
-
-
-
     }
 
     const populateAssignments = () => {

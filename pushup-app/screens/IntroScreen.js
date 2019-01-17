@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 const slides = [
   {
     key: 'screen1',
-    title: 'Add a drink to your list',
+    title: 'Add drinks to your list',
     image: require('../assets/images/drinkscreen.png'),
     imageStyle: styles.image,
     backgroundColor: '#429485',
