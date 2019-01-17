@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 20,
     borderColor: '#E4ECE5',
-    borderWidth: 20,
+    borderWidth: 10,
 
   },
   title: {
@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   description: {
-    margin: 30,
+    marginHorizontal: 10,
+    marginTop: 20,
   },
   stretch: {
     flex: 1,

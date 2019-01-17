@@ -89,7 +89,6 @@ export default class HomeScreen extends React.Component {
         const exercise = availableExercises[Math.floor(Math.random() * 7)];
 
         firebase.database().ref('/exercises/' + exercise).once('value').then(function(snapshot) {
-          console.log(snapshot.val());
           createAssignment(drink, snapshot.val());
         });
     }
@@ -97,7 +96,6 @@ export default class HomeScreen extends React.Component {
     async function getExerciseFromApi(drink) {
       let expert = await AsyncStorage.getItem('expert');
       expert = expert === "true" ? true : false;
-      console.log(expert);
 
       if (!expert) {
         getExercisefromDatabase(drink);
