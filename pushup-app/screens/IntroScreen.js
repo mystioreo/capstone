@@ -27,7 +27,7 @@ const slides = [
   },
   {
     key: 'screen3',
-    title: 'Customize your workout',
+    title: 'Customize using Expert Mode',
     image: require('../assets/images/equipmentscreen.png'),
     imageStyle: styles.image,
     backgroundColor: '#DA859A',

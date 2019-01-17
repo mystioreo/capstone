@@ -69,14 +69,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    margin: 20,
+    margin: 10,
   },
   description: {
     margin: 30,
   },
   stretch: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
   }
 
 });

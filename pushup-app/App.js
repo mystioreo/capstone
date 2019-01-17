@@ -57,6 +57,16 @@ export default class App extends React.Component {
         require('./assets/images/drinkscreen.png'),
         require('./assets/images/exercisescreen.png'),
         require('./assets/images/equipmentscreen.png'),
+        require('./assets/images/barbell.png'),
+        require('./assets/images/sz-bar.png'),
+        require('./assets/images/dumbbell.png'),
+        require('./assets/images/gym-mat.png'),
+        require('./assets/images/swiss-ball.png'),
+        require('./assets/images/pull-up-bar.png'),
+        require('./assets/images/none.png'),
+        require('./assets/images/bench.png'),
+        require('./assets/images/incline-bench.png'),
+        require('./assets/images/kettlebell.png'),
 
 
       ]),

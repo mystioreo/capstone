@@ -56,8 +56,9 @@ class ExerciseInfo extends Component {
         <View style={styles.introContainer}>
           <View>
             <Text style={styles.title}>{name}</Text>
+            <Equipment equipment={equipment} />
           </View>
-          <Equipment equipment={equipment} />
+
         <Text style={styles.intro}> Unless otherwise specified, one set is 10 repetitions or a 30-second hold. </Text>
         {this.props.exercise.uri && <ExerciseVideo exercise={this.props.exercise}/>}
         </View>
