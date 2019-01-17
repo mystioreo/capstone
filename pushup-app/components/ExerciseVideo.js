@@ -1,8 +1,8 @@
 
 import React from 'react';
 import PropTypes from "prop-types";
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import { Video } from 'expo';
+import { Platform, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Audio, Video } from 'expo';
 import { MaterialIcons, Octicons } from '@expo/vector-icons';
 
 class ExerciseVideo extends React.Component {
@@ -11,6 +11,22 @@ class ExerciseVideo extends React.Component {
       fullScreen: false,
       shouldPlay: true,
   }
+  async componentDidMount() {
+        await Audio.setAudioModeAsync({
+            playsInSilentModeIOS: true,
+            allowsRecordingIOS: false,
+            interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_MIX_WITH_OTHERS,
+            shouldDuckAndroid: false,
+            interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+            playThroughEarpieceAndroid: true
+        })
+        await Audio.setIsEnabledAsync(true)
+        const sound = new Audio.Sound()
+        await sound.loadAsync({ uri: 'silence.mp3' })
+        sound.playAsync()
+        sound.setIsMutedAsync(true)
+        sound.setIsLoopingAsync(true)
+    }
 
     handlePlayAndPause = () => {
       this.setState(prevState => ({
@@ -66,6 +82,7 @@ class ExerciseVideo extends React.Component {
       alignItems: 'center',
       justifyContent: 'center',
       margin: 20,
+      marginBottom: 40,
     },
       controlBar: {
       position: 'absolute',
