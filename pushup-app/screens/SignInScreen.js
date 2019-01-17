@@ -42,9 +42,6 @@ export default class SignInScreen extends React.Component {
         const {
           type,
           token,
-          expires,
-          permissions,
-          declinedPermissions,
         } = await Expo.Facebook.logInWithReadPermissionsAsync(REACT_APP_FACEBOOK_APP_ID, {
           permissions: ['public_profile','email'],
         });

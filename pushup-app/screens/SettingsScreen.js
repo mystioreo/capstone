@@ -1,7 +1,6 @@
 import React from 'react';
-import { Linking, Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage, Switch } from 'react-native';
+import { Text, Alert, Picker, View, ScrollView, Button, StyleSheet, AsyncStorage, Switch } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import HTMLView from 'react-native-htmlview';
 
 export default class SettingsScreen extends React.Component {
 
@@ -142,7 +141,7 @@ export default class SettingsScreen extends React.Component {
             <Picker
               selectedValue={this.state.language}
               style={styles.picker}
-              onValueChange={(itemValue, itemIndex) => changeLanguage(itemValue)}>
+              onValueChange={(itemValue) => changeLanguage(itemValue)}>
               <Picker.Item label="Deutsch" value="1" />
               <Picker.Item label="English" value="2" />
             </Picker>
