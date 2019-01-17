@@ -35,21 +35,22 @@ class ExerciseVideo extends React.Component {
                 source={{ uri: this.props.exercise.uri }}
                 shouldPlay={this.state.shouldPlay}
                 resizeMode="cover"
-                style={{ width, height: 300 }}
+                style={{ width, height: 220 }}
                 isMuted={this.state.mute}
+                ignoreSilentSwitch={"ignore"}
             />
             <View style={styles.controlBar}>
               <MaterialIcons
-                name={this.state.mute ? "volume-mute" : "volume-up"}
-                size={45}
-                color="white"
-                onPress={this.handleVolume}
-              />
-              <MaterialIcons
                 name={this.state.shouldPlay ? "pause" : "play-arrow"}
                 size={45}
-                color="white"
+                color="#c9a991"
                 onPress={this.handlePlayAndPause}
+              />
+              <MaterialIcons
+                name={this.state.mute ? "volume-mute" : "volume-up"}
+                size={45}
+                color="#c9a991"
+                onPress={this.handleVolume}
               />
           </View>
           </View>
@@ -74,7 +75,7 @@ class ExerciseVideo extends React.Component {
       height: 45,
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'space-around',
       backgroundColor: "rgba(0, 0, 0, 0.5)",
     }
   });
