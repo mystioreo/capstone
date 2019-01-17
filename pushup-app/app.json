@@ -3,14 +3,14 @@
     "name": "Six Pack",
     "slug": "six-pack",
     "privacy": "public",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/largeIcon.png",
+    "icon": "./assets/images/largeIconSolid.png",
     "splash": {
       "image": "./assets/images/largeIcon.png",
       "resizeMode": "contain",
@@ -24,6 +24,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Capstone project for Ada Developers Academy.  Six-Pack is a Lifestyle app that assigns a random exercise to be completed each time the user logs a drink.",
+    "githubUrl": "https://github.com/mystioreo/capstone"
   }
 }
