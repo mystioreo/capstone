@@ -249,6 +249,7 @@ export default class HomeScreen extends React.Component {
               onRequestClose={() => {showDescription(false);}}
               >
 
+
               <View style={{marginTop: 100}}>
 
                 <ScrollView>

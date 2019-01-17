@@ -64,6 +64,7 @@ class ExerciseVideo extends React.Component {
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+      margin: 20,
     },
       controlBar: {
       position: 'absolute',

@@ -59,8 +59,8 @@ class ExerciseInfo extends Component {
           </View>
           <Equipment equipment={equipment} />
         <Text style={styles.intro}> Unless otherwise specified, one set is 10 repetitions or a 30-second hold. </Text>
-        </View>
         {this.props.exercise.uri && <ExerciseVideo exercise={this.props.exercise}/>}
+        </View>
         <View style={styles.detailsContainer}>
           <View style={styles.description}>
             <HTMLView
@@ -87,7 +87,7 @@ ExerciseInfo.propTypes = {
 const styles = StyleSheet.create({
   introContainer: {
     flex: 1,
-    margin: 30,
+    marginHorizontal: 30,
     paddingTop: 30,
     backgroundColor: '#C9A991',
     borderRadius: 20,
@@ -96,7 +96,8 @@ const styles = StyleSheet.create({
 
   detailsContainer: {
     flex: 1,
-    margin: 30,
+    marginTop: 10,
+    marginHorizontal: 30,
     paddingBottom: 30,
     backgroundColor: '#fff',
     borderRadius: 20,
