@@ -76,7 +76,22 @@ export default class HomeScreen extends React.Component {
     }
 
     async function getExercisefromDatabase(drink) {
-        console.log(drink);
+        const availableExercises = {
+          0: "bicepcurls",
+          1: "overheadpress",
+          2: "pushups",
+          3: "situps",
+          4: "squats",
+          5: "superman",
+          6: "toelifts",
+        }
+
+        const exercise = availableExercises[Math.floor(Math.random() * 7)];
+
+        firebase.database().ref('/exercises/' + exercise).once('value').then(function(snapshot) {
+          console.log(snapshot.val());
+          createAssignment(drink, snapshot.val());
+        });
     }
 
     async function getExerciseFromApi(drink) {
@@ -234,14 +249,10 @@ export default class HomeScreen extends React.Component {
               onRequestClose={() => {showDescription(false);}}
               >
 
-
-
               <View style={{marginTop: 100}}>
 
                 <ScrollView>
-
                   <ExerciseInfo exercise={this.state.modalExercise} />
-                  <ExerciseVideo exercise={this.state.modalExercise}/>
                   <TouchableHighlight
                     onPress={() => {
                       showDescription(false);

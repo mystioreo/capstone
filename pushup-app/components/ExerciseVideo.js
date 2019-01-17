@@ -25,14 +25,14 @@ class ExerciseVideo extends React.Component {
     }
 
     render() {
-      const { width } = Dimensions.get('window');
+      let { width } = Dimensions.get('window');
+      width *= 0.8;
 
       return (
         <View style={styles.container}>
           <View>
-            <Text style={{ textAlign: 'center' }}>{this.props.exercise.name}</Text>
             <Video
-                source={{ uri: 'https://www.cdc.gov/physicalactivity/videos/Superman_Ipod-Lg.mp4' }}
+                source={{ uri: this.props.exercise.uri }}
                 shouldPlay={this.state.shouldPlay}
                 resizeMode="cover"
                 style={{ width, height: 300 }}

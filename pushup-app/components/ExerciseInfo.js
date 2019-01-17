@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Image, Alert, View, ScrollView, Text, StyleSheet } from 'react-native';
 import HTMLView from 'react-native-htmlview';
 import Equipment from './Equipment';
+import ExerciseVideo from './ExerciseVideo';
 
 class ExerciseInfo extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class ExerciseInfo extends Component {
 
   render() {
 
-  const { name, description, equipment, muscles, } = { ...this.props.exercise };
+  const { name, description, equipment } = { ...this.props.exercise };
 
     return (
       <ScrollView>
@@ -59,6 +60,7 @@ class ExerciseInfo extends Component {
           <Equipment equipment={equipment} />
         <Text style={styles.intro}> Unless otherwise specified, one set is 10 repetitions or a 30-second hold. </Text>
         </View>
+        {this.props.exercise.uri && <ExerciseVideo exercise={this.props.exercise}/>}
         <View style={styles.detailsContainer}>
           <View style={styles.description}>
             <HTMLView
