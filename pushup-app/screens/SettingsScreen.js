@@ -67,7 +67,7 @@ export default class SettingsScreen extends React.Component {
     return (
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.switch}>
-            <Text style={styles.toggle}>Beginner Mode</Text>
+            <Text style={styles.toggle}>Normal Mode</Text>
             <Switch
               onValueChange={() => changeSettings('expert')}
               value={this.state.expert === "true" ? true : false}

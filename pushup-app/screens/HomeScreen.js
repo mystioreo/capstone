@@ -244,15 +244,15 @@ export default class HomeScreen extends React.Component {
 
 
               <View style={{marginTop: 100}}>
-
+                <TouchableHighlight
+                  onPress={() => {
+                    showDescription(false);
+                  }}>
+                  <Text style={styles.center}>◀ Back</Text>
+                </TouchableHighlight>
                 <ScrollView>
                   <ExerciseInfo exercise={this.state.modalExercise} />
-                  <TouchableHighlight
-                    onPress={() => {
-                      showDescription(false);
-                    }}>
-                    <Text style={styles.center}>Close</Text>
-                  </TouchableHighlight>
+
                 </ScrollView>
               </View>
             </Modal>
@@ -323,8 +323,8 @@ const styles = StyleSheet.create({
   },
   center: {
     color: '#429485',
-    alignSelf: 'center',
-    margin: 30,
+    marginLeft: 30,
+    marginBottom: 20,
     fontSize: 18,
 
   }
