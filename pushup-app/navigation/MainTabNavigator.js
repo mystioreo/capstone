@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, Text } from 'react-native';
+import { View, Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
@@ -13,11 +13,7 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: ({ focused }) => (
-    <Text style={focused ? {alignSelf: 'center', color: Colors.tabIconSelected} : {alignSelf: 'center', color: Colors.tabIconDefault}}>
-      Home
-    </Text>
-  ),
+  tabBarLabel: <View/>,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -35,11 +31,7 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: ({ focused }) => (
-    <Text style={focused ? {alignSelf: 'center', color: Colors.tabIconSelected} : {alignSelf: 'center', color: Colors.tabIconDefault}}>
-      Settings
-    </Text>
-  ),
+  tabBarLabel: <View/>,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -53,11 +45,7 @@ const AboutStack = createStackNavigator({
 });
 
 AboutStack.navigationOptions = {
-  tabBarLabel: ({ focused }) => (
-    <Text style={focused ? {alignSelf: 'center', color: Colors.tabIconSelected} : {alignSelf: 'center', color: Colors.tabIconDefault}}>
-      About
-    </Text>
-  ),
+  tabBarLabel: <View/>,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
