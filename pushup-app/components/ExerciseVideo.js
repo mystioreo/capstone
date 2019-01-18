@@ -20,12 +20,6 @@ class ExerciseVideo extends React.Component {
             interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
             playThroughEarpieceAndroid: true
         })
-        await Audio.setIsEnabledAsync(true)
-        const sound = new Audio.Sound()
-        await sound.loadAsync({ uri: 'silence.mp3' })
-        sound.playAsync()
-        sound.setIsMutedAsync(true)
-        sound.setIsLoopingAsync(true)
     }
 
     handlePlayAndPause = () => {
