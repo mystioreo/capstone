@@ -15,6 +15,9 @@ import { Icon } from 'react-native-elements'
 
 
 export default class SignInScreen extends React.Component {
+  state = {
+    showSignInButton: true,
+  };
   static navigationOptions = {
     title: 'Log In',
   };
@@ -22,17 +25,19 @@ export default class SignInScreen extends React.Component {
   render() {
     return (
       <View style={styles.outerContainer}>
-        <TouchableOpacity onPress={this._signInAsync}>
-          <View style={styles.container}  >
-            <Icon
-             size={100}
-             name='facebook-square'
-             type='font-awesome'
-             color='#3b5998'
-             />
-           <Text style={styles.text}>Sign in with Facebook</Text>
-          </View>
-        </TouchableOpacity>
+        { this.state.showSignInButton &&
+          <TouchableOpacity onPress={this._signInAsync}>
+            <View style={styles.container}  >
+              <Icon
+               size={100}
+               name='facebook-square'
+               type='font-awesome'
+               color='#3b5998'
+               />
+             <Text style={styles.text}>Sign in with Facebook</Text>
+            </View>
+          </TouchableOpacity>
+        }
         <Image
           style={{width: 200, height: 200, alignSelf: 'center'}}
           source={require('../assets/images/kitty.png')}
@@ -43,6 +48,7 @@ export default class SignInScreen extends React.Component {
   }
 
   _signInAsync = async () => {
+    this.setState ({showSignInButton: false});
     try {
         const {
           type,
@@ -89,6 +95,7 @@ export default class SignInScreen extends React.Component {
             Alert.alert(`Firebase Login Error: ${error}`);
           });
         } else {
+          this.setState ({showSignInButton: true});
           Alert.alert('Unable to log you in.  Please try again later.');
         }
       } catch ({ message }) {

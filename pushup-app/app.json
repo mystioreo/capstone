@@ -10,6 +10,8 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
+    "primaryColor": "#429485",
+    "facebookAppId": "1947286135580623",
     "icon": "./assets/images/largeIconSolid.png",
     "splash": {
       "image": "./assets/images/largeIcon.png",
@@ -25,7 +27,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "Capstone project for Ada Developers Academy.  Six-Pack is a Lifestyle app that assigns a random exercise to be completed each time the user logs a drink.",
+    "description": "Six-Pack is a Lifestyle app that assigns a random exercise to be completed each time the user logs a drink.",
     "githubUrl": "https://github.com/mystioreo/capstone"
   }
 }
