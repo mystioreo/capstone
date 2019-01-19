@@ -12,6 +12,13 @@ const styles = StyleSheet.create({
 
 const slides = [
   {
+    key: 'screen0',
+    title: "Welcome to your Six Pack! \nLet's get started with a quick tour.",
+    image: require('../assets/images/largeIcon.png'),
+    imageStyle: styles.image,
+    backgroundColor: '#DA859A',
+  },
+  {
     key: 'screen1',
     title: 'Add drinks to your list',
     image: require('../assets/images/drinkscreen.png'),
@@ -40,7 +47,7 @@ export default class IntroScreen extends React.Component {
     this.props.navigation.navigate('App');
   }
   render() {
-      return <AppIntroSlider slides={slides} onDone={this._onDone}/>;
+      return <AppIntroSlider slides={slides} showSkipButton={true} showPrevButton={true} bottomButton={true} onSkip={this._onDone} onDone={this._onDone}/>;
 
   }
 }
