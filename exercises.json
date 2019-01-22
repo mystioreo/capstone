@@ -1,0 +1,44 @@
+"exercises" : {
+    "bicepcurls" : {
+      "description" : "<h4>Bicep curls can be done with dumbbells or a resistance band. If you don’t have either of these, you can use two water bottles or soup cans.</h4>  <h4>A good rule of thumb is to use an amount of weight that’s going to leave you tired after 10 repetitions.</h4> <h4>You can either stand or sit.</h4> <h4>With a dumbbell in each hand, place your feet shoulder-width apart and keep your arms at your sides. Have your palms facing your thighs. </h4> <h4>Lift the weight so your forearms rotate and your palms face toward your shoulders.</h4> <h4>Keep your upper arms and elbows close to your side, as if you had a newspaper tucked beneath your arm. Keep your wrists straight and dumbbells parallel to the floor.</h4> <h4>Pause, and then lower the dumbbells back toward your thighs, rotating your forearms so that your arms, once again, are at your sides, with your palms facing your thighs.</h4> <h4>It is important to make sure that your elbows don’t move away from the sides of your body, and that your wrists stay straight.</h4>",
+      "equipment" : [ 3 ],
+      "name" : "Bicep Curls",
+      "uri" : "https://www.cdc.gov/physicalactivity/videos/Biscep_Curls_Ipod-Lg.mp4"
+    },
+    "overheadpress" : {
+      "description" : "<h4>The overhead press can be done with dumbbells or a resistance band.  If you don’t have either of these, you can use two water bottles or soup cans.</h4> <h4> A good rule of thumb is to use an amount of weight that’s going to leave you tired after 10 repetitions.</h4> <h4>Stand or sit with your feet shoulder-width apart, with a dumbbell in each hand. </h4> <h4>Raise your hands, with your palms facing forward and your wrists straight until the dumbbells are level with your shoulders and parallel to the floor.</h4> <h4>Push the dumbbells up and over your head until your arms are fully extended, making sure not to lock your elbows. Be careful not to let the dumbbells move too far in front of your body or behind it. </h4> <h4>Pause, then lower the dumbbells back to shoulder level, bringing your elbows down, close to your sides.</h4> ",
+      "equipment" : [ 3 ],
+      "name" : "Overhead Press",
+      "uri" : "https://www.cdc.gov/physicalactivity/videos/Overhead_Press-Home_Ipod-Lg.mp4"
+    },
+    "pushups" : {
+      "description" : "<h4>Option 1: Use a clear wall - no pictures or windows. \t</h4> <h4>Face the wall, just a bit farther than arm’s length away, and lean forward, placing your palms flat against the wall at about shoulder-height and shoulder- width apart. </h4> <h4>Bend your elbows as you lower your upper body toward the wall in a controlled motion, keeping your feet planted, your back straight, and your abdominal muscles tightened the whole time.</h4> <h4>Pause for a just a second and then push yourself back until your arms are straight. Be careful not to lock your elbows. </h4>  <h4>Option 2: You can modify this activity by getting on your knees. </h4> <h4>Make sure your hands are about shoulder-width apart and your head is looking straight forward.</h4> <h4>Keep your abdominal muscles tight and bend your elbows as you lower your upper body just to the floor and then come back up. </h4> <h4>Even this modified push-up works your arms, shoulders, and chest muscles.</h4> <h4>Option 3: For the traditional push-up, get on your toes instead of your knees, for the maximum effect. </h4>",
+      "equipment" : [ 4 ],
+      "name" : "Push-Ups",
+      "uri" : "https://www.cdc.gov/physicalactivity/videos/Push-ups_Ipod-Lg.mp4"
+    },
+    "situps" : {
+      "description" : "<h4>Lie on your back on the floor, with your knees bent and your feet flat on the floor.</h4> <h4>Place your hands behind your head, elbows pointing out.<h4> </h4>Slowly raise your shoulders and upper back off of the floor, pause, and lower your shoulders back on the floor.</h4> <h4>Remember -- only lift your head and shoulders off of the floor. Don’t sit up completely.</h4> <h4>Be sure you’re breathing, throughout your abdominal workout, exhaling as you raise your body, and inhaling as you lower yourself back to the floor.</h4> <h4>Don’t pull on your head or neck with your hands, and keep your chin lifted toward the ceiling, with your elbows pointed out.</h4> <h4>If or when you’re ready for more of a challenge, modify this activity by raising your legs to a 90 degree angle and crossing them.</h4> <h4>Place your hands behind your head, elbows pointing out, and slowly raise your shoulders and upper back off of the floor, keeping your chin pointing straight toward the ceiling.</h4> <h4>Pause, then lower yourself back to the floor.</h4>",
+      "equipment" : [ 4 ],
+      "name" : "Sit-Ups",
+      "uri" : "https://www.cdc.gov/physicalactivity/videos/Sit-ups_Ipod-Lg.mp4"
+    },
+    "squats" : {
+      "description" : "<h4>Begin with your feet slightly more than shoulder-width apart and extend your arms parallel to the floor.</h4> <h4>Lean forward just a little bit at your hips.</h4> <h4>As you go down, use your knees and your toes as a guide.</h4> <h4>To ensure that you maintain the correct form, always keep your knees from moving in front of your toes.</h4> <h4>With your back straight and your hips still slightly leaning forward, lower yourself in a slow, controlled motion until you reach a near-sitting position.</h4> <h4>Pause, and then slowly rise until you’re standing again.</h4> <h4>Be sure your back is straight and your hips are slightly forward.</h4> <h4>Place more of your weight on your heels than on the balls or toes of your feet.</h4> <h4>For an easier version, lean back against a wall.</h4> <h4>Slide down until your knees are at about a 90-degree angle or your thighs bone is parallel to the floor.</h4> <h4>Come back slowly to your starting position.</h4>",
+      "equipment" : [ 7 ],
+      "name" : "Half Squats",
+      "uri" : "https://www.cdc.gov/physicalactivity/videos/Half_squat_IPod_Lg.mp4"
+    },
+    "superman" : {
+      "description" : "<h4>Lying on the floor face-down, extend your arms straight over your head.</h4> <h4>Lift your right arm and your left leg up off of the floor at the same time, keeping your head, neck, and back in a straight line.</h4> <h4>Be sure your ankles are bent, not pointed.</h4> <h4>Hold that position for 2 to 4 seconds before lowering your arm and leg back to the floor.</h4> <h4>Alternate, by lifting your left arm and your right leg.</h4> <h4>If you really want to make it a superhero activity, lift all four of your arms and legs up off of the floor at the same time.</h4> <h4>Hold this for 2 to 4 seconds and then lower yourself back down to the floor.</h4>",
+      "equipment" : [ 4 ],
+      "name" : "Superman",
+      "uri" : "https://www.cdc.gov/physicalactivity/videos/Superman_Ipod-Lg.mp4"
+    },
+    "toelifts" : {
+      "description" : "<h4>Start out by standing on the floor with your hand secured on counter or a chair.</h4> <h4>With your feet shoulder-width apart, push up as far as you can on the balls of your feet.</h4> <h4>Pause for 2 seconds, then lower your heels back to the floor.</h4> <h4>Want more of a challenge? Do your toe lifts on the stairs.</h4> <h4>Be sure that your staircase has a railing or a good wall so that you can balance yourself.</h4> <h4>Always, for safety’s sake, use the first stair.</h4> <h4>Facing up the staircase, stand with the balls of your feet with your heels just hanging off the edge, feet shoulder-width apart.</h4> <h4>Push up as far as you can on the balls of your feet, pause for 2 seconds, then lower the heels back to the starting position.</h4>",
+      "equipment" : [ 7 ],
+      "name" : "Toe Lifts",
+      "uri" : "https://www.cdc.gov/physicalactivity/videos/Toe_Lift_Ipod-Lg.mp4"
+    }
+  },
