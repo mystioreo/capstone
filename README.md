@@ -9,9 +9,9 @@ The objective of this project was to build an original cross-platform app using 
  
 ## Screenshots
 
-![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true)
-![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true)
-![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true)
+![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true) <!-- .element height="50%" width="50%" -->
+![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true) <!-- .element height="50%" width="50%" -->
+![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true) <!-- .element height="50%" width="50%" -->
 
 ## Tech/framework used
 <b>Built with</b>
