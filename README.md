@@ -47,7 +47,7 @@ npm install
 
     https://developers.facebook.com/
 
-4) Create a Project in Firebase using Realtime Database.  Note your API Key, Auth Domain, Database URL, and Storage Bucket URL.
+4) Create a Project in Firebase using Realtime Database.  (You will need to import the data from exercises.json into your Realtime Database under the root node.) Note your API Key, Auth Domain, Database URL, and Storage Bucket URL.
 
     https://console.firebase.google.com/
 
