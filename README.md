@@ -4,7 +4,7 @@ This app is for entertainment and informational purposes only.
 Consult a physician before performing this or any exercise program.
 
 ## Motivation
-This is a Capstone project for Ada Developers Academy.  
+This is a Capstone project for [Ada Developers Academy](https://www.adadevelopersacademy.org/).  
 The objective of this project was to build an original cross-platform app using React Native.
  
 ## Screenshots
@@ -16,10 +16,10 @@ The objective of this project was to build an original cross-platform app using 
 ## Tech/framework used
 <b>Built with</b>
 - [Expo](https://expo.io/)
-- [React Native] (https://facebook.github.io/react-native/)
-- [Firebase] (https://firebase.google.com/)
-- [Facebook] (https://developers.facebook.com/)
-- [wger Workout Manager API] (https://wger.de)
+- [React Native](https://facebook.github.io/react-native/)
+- [Firebase](https://firebase.google.com/)
+- [Facebook](https://developers.facebook.com/)
+- [wger Workout Manager API] https://wger.de)
 
 ## Installation
 * Clone this repository:
@@ -52,6 +52,6 @@ REACT_APP_FACEBOOK_APP_SECRET=
 * Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
 
 ## Credits
-Beginner exercise data courtesy of [The CDC] (https://www.cdc.gov/physicalactivity/basics/videos/index.htm)
-Expert exercise data courtesy of [wger Workout Manager] (https://wger.de/en/)
-Icons made by [Freepik] (http://www.freepik.com/) and [Roundicons] (https://www.roundicons.com/) from [www.flaticon.com] (https://www.flaticon.com/), licensed by [Creative Commons BY 3.0] (https://www.roundicons.com/)
+Beginner exercise data courtesy of [The CDC](https://www.cdc.gov/physicalactivity/basics/videos/index.htm)
+Expert exercise data courtesy of [wger Workout Manager](https://wger.de/en/)
+Icons made by [Freepik](http://www.freepik.com/) and [Roundicons](https://www.roundicons.com/) from [www.flaticon.com](https://www.flaticon.com/), licensed by [Creative Commons BY 3.0](https://www.roundicons.com/)
