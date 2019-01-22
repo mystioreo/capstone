@@ -10,7 +10,7 @@ The objective of this project was to build an original Android/iOS app using Rea
 ## Screenshots
 * <b>Android:</b>     
 
-![Login Screen](/pushup-app/assets/images/screenshots/intro0screenshot.png?raw=true) ![Intro Screen 1](/pushup-app/assets/images/screenshots/intro1screenshot.png?raw=true)  ![Intro Screen 2](/pushup-app/assets/images/screenshots/intro2screenshot.png?raw=true) ![Intro Screen 3](/pushup-app/assets/images/screenshots/intro3screenshot.png?raw=true) ![Intro Screen 4](/pushup-app/assets/images/screenshots/intro4screenshot.png?raw=true) 
+![Login Screen](/pushup-app/assets/images/screenshots/intro0screenshot.png?raw=true) ![Intro Screen 1](/pushup-app/assets/images/screenshots/intro1screenshot.png?raw=true)  ![Intro Screen 2](/pushup-app/assets/images/screenshots/intro2screenshot.png?raw=true) ![Intro Screen 3](/pushup-app/assets/images/screenshots/intro3screenshot.png?raw=true)
 
 
 * <b>iOS:</b>     
@@ -19,6 +19,7 @@ The objective of this project was to build an original Android/iOS app using Rea
 
 ## Tech/framework used
 <b>Built with:</b>
+
 [Expo](https://expo.io/)
 
 [React Native](https://facebook.github.io/react-native/)
@@ -34,14 +35,22 @@ The App is hosted on Expo's servers.  You can interact with it at https://expo.i
 
 To download and edit this project:
 
-* Clone this repository:
-- git clone 
-* Install dependencies:
-- npm install
-* Create a Facebook Developers Account
--
-* Create a Firebase Realtime Database Storage Bucket
--
+1) Clone this repository:
+```
+git clone https://github.com/mystioreo/capstone.git
+```
+2) Install dependencies:
+```
+npm install
+```
+3) Create a Facebook Developers Account, create a new App, and note your App ID and App Secret:
+
+https://developers.facebook.com/
+
+4) Create a Project in Firebase using Realtime Database.  Note your API Key, Auth Domain, Database URL, and Storage Bucket URL.
+
+https://console.firebase.google.com/
+
 * Create a .env file in the main directory with the following information:
 ```
 REACT_APP_API_KEY= "<YOUR-FIREBASE-API-KEY>"
@@ -54,12 +63,12 @@ REACT_APP_FACEBOOK_APP_SECRET= "<YOUR-FACEBOOK-APP-SECRET>"
 ```
 
 ## Using the App
-1. On the main/drinks screen, click on a drink icon to add it to your log.
-2. An assignment will pop up on the screen showing the drink type, time the drink was logged, and assigned exercise.
-3. Click on the name of an exercise to get more details/instructions.
-4. Click on the checkmark next to an assigned exercise to mark complete and dismiss it from your screen.
-5. Normal mode pulls from a fixed databased of exercises with accompanying instructional videos.
-6. Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
+1) On the main/drinks screen, click on a drink icon to add it to your log.
+2) An assignment will pop up on the screen showing the drink type, time the drink was logged, and assigned exercise.
+3) Click on the name of an exercise to get more details/instructions.
+4) Click on the checkmark next to an assigned exercise to mark complete and dismiss it from your screen.
+5) Normal mode pulls from a fixed databased of exercises with accompanying instructional videos.
+6) Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
 
 ## Credits
 Beginner exercise data courtesy of [The CDC](https://www.cdc.gov/physicalactivity/basics/videos/index.htm)
