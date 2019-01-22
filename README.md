@@ -9,7 +9,7 @@ The objective of this project was to build an original cross-platform app using 
  
 ## Screenshots
 
-![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true)   ![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true)   ![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true)
+![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true) &nbsp;&nbsp;  ![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true) &nbsp;&nbsp;  ![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true)
 
 ## Tech/framework used
 <b>Built with</b>
