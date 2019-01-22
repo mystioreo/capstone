@@ -9,9 +9,9 @@ The objective of this project was to build an original cross-platform app using 
  
 ## Screenshots
 
-![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true) <!-- .element height="50%" width="50%" -->
-![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true) <!-- .element height="50%" width="50%" -->
-![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true) <!-- .element height="50%" width="50%" -->
+![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true =200x400)
+![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true)
+![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true)
 
 ## Tech/framework used
 <b>Built with</b>
@@ -19,7 +19,7 @@ The objective of this project was to build an original cross-platform app using 
 - [React Native](https://facebook.github.io/react-native/)
 - [Firebase](https://firebase.google.com/)
 - [Facebook](https://developers.facebook.com/)
-- [wger Workout Manager API] https://wger.de)
+- [wger Workout Manager API](https://wger.de)
 
 ## Installation
 * Clone this repository:
@@ -52,6 +52,6 @@ REACT_APP_FACEBOOK_APP_SECRET=
 * Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
 
 ## Credits
-Beginner exercise data courtesy of [The CDC](https://www.cdc.gov/physicalactivity/basics/videos/index.htm)
-Expert exercise data courtesy of [wger Workout Manager](https://wger.de/en/)
-Icons made by [Freepik](http://www.freepik.com/) and [Roundicons](https://www.roundicons.com/) from [www.flaticon.com](https://www.flaticon.com/), licensed by [Creative Commons BY 3.0](https://www.roundicons.com/)
+- Beginner exercise data courtesy of [The CDC](https://www.cdc.gov/physicalactivity/basics/videos/index.htm)
+- Expert exercise data courtesy of [wger Workout Manager](https://wger.de/en/)
+- Icons made by [Freepik](http://www.freepik.com/) and [Roundicons](https://www.roundicons.com/) from [www.flaticon.com](https://www.flaticon.com/), licensed by [Creative Commons BY 3.0](https://www.roundicons.com/)
