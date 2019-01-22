@@ -63,12 +63,17 @@ REACT_APP_FACEBOOK_APP_SECRET= "<YOUR-FACEBOOK-APP-SECRET>"
 ```
 
 ## Using the App
-1) On the main/drinks screen, click on a drink icon to add it to your log.
-2) An assignment will pop up on the screen showing the drink type, time the drink was logged, and assigned exercise.
-3) Click on the name of an exercise to get more details/instructions.
-4) Click on the checkmark next to an assigned exercise to mark complete and dismiss it from your screen.
-5) Normal mode pulls from a fixed databased of exercises with accompanying instructional videos.
-6) Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
+* On the main/drinks screen, click on a drink icon to add it to your log.
+
+* An assignment will pop up on the screen showing the drink type, time the drink was logged, and assigned exercise.
+
+* Click on the name of an exercise to get more details/instructions.
+
+* Click on the checkmark next to an assigned exercise to mark complete and dismiss it from your screen.
+
+* Normal mode pulls from a fixed database of exercises with accompanying instructional videos.
+
+* Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
 
 ## Credits
 Beginner exercise data courtesy of [The CDC](https://www.cdc.gov/physicalactivity/basics/videos/index.htm)
