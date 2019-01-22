@@ -5,9 +5,15 @@ Consult a physician before performing this or any exercise program.
 
 ## Motivation
 This is a Capstone project for [Ada Developers Academy](https://www.adadevelopersacademy.org/).  
-The objective of this project was to build an original cross-platform app using React Native.
+The objective of this project was to build an original Android/iOS app using React Native.
  
 ## Screenshots
+* <b>Android:</b>     
+
+![Login Screen](/pushup-app/assets/images/screenshots/intro0screenshot.png?raw=true) ![Intro Screen 1](/pushup-app/assets/images/screenshots/intro1screenshot.png?raw=true)  ![Intro Screen 2](/pushup-app/assets/images/screenshots/intro2screenshot.png?raw=true) ![Intro Screen 3](/pushup-app/assets/images/screenshots/intro3screenshot.png?raw=true) ![Intro Screen 4](/pushup-app/assets/images/screenshots/intro4screenshot.png?raw=true) 
+
+
+* <b>iOS:</b>     
 
 ![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true) &nbsp;&nbsp;  ![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true) &nbsp;&nbsp;  ![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true)
 
@@ -24,6 +30,10 @@ The objective of this project was to build an original cross-platform app using 
 [wger Workout Manager API](https://wger.de)
 
 ## Installation
+The App is hosted on Expo's servers.  You can interact with it at https://expo.io/@mystioreo/six-pack 
+
+To download and edit this project:
+
 * Clone this repository:
 - git clone 
 * Install dependencies:
@@ -33,19 +43,17 @@ The objective of this project was to build an original cross-platform app using 
 * Create a Firebase Realtime Database Storage Bucket
 -
 * Create a .env file in the main directory with the following information:
+```
+REACT_APP_API_KEY= "<YOUR-FIREBASE-API-KEY>"
+REACT_APP_AUTH_DOMAIN= "<YOUR-PROJECT-ID>.firebaseapp.com"
+REACT_APP_DATABASE_URL= "https://<YOUR-DATABASE-NAME>.firebaseio.com"
+REACT_APP_STORAGE_BUCKET= "<YOUR-STORAGE-BUCKET>.appspot.com"
 
-REACT_APP_API_KEY=
-REACT_APP_AUTH_DOMAIN=
-REACT_APP_DATABASE_URL=
-REACT_APP_STORAGE_BUCKET=
+REACT_APP_FACEBOOK_APP_ID= "<YOUR-FACEBOOK-APP-ID>"
+REACT_APP_FACEBOOK_APP_SECRET= "<YOUR-FACEBOOK-APP-SECRET>"
+```
 
-REACT_APP_IOS_CLIENT_ID=
-REACT_APP_ANDROID_CLIENT_ID=
-
-REACT_APP_FACEBOOK_APP_ID=
-REACT_APP_FACEBOOK_APP_SECRET=
-
-## How to use
+## Using the App
 1. On the main/drinks screen, click on a drink icon to add it to your log.
 2. An assignment will pop up on the screen showing the drink type, time the drink was logged, and assigned exercise.
 3. Click on the name of an exercise to get more details/instructions.
