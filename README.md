@@ -45,13 +45,13 @@ npm install
 ```
 3) Create a Facebook Developers Account, create a new App, and note your App ID and App Secret:
 
-https://developers.facebook.com/
+    https://developers.facebook.com/
 
 4) Create a Project in Firebase using Realtime Database.  Note your API Key, Auth Domain, Database URL, and Storage Bucket URL.
 
-https://console.firebase.google.com/
+    https://console.firebase.google.com/
 
-* Create a .env file in the main directory with the following information:
+5) Create a file named <b>.env</b> in the main project directory with the following information:
 ```
 REACT_APP_API_KEY= "<YOUR-FIREBASE-API-KEY>"
 REACT_APP_AUTH_DOMAIN= "<YOUR-PROJECT-ID>.firebaseapp.com"
