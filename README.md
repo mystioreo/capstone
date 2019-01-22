@@ -1,7 +1,7 @@
 ## Six Pack
-Six Pack is an adult beverage tracker that assigns exercise in exchange for each drink logged.
-This app is for entertainment and informational purposes only. 
-Consult a physician before performing this or any exercise program.
+Six Pack is an adult beverage tracker that assigns exercise in exchange for each drink logged.    
+This app is for entertainment purposes only.     
+Consult a physician before performing this or any exercise program. :sweat_smile:
 
 ## Motivation
 This is a Capstone project for [Ada Developers Academy](https://www.adadevelopersacademy.org/).  
