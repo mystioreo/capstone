@@ -9,17 +9,19 @@ The objective of this project was to build an original cross-platform app using 
  
 ## Screenshots
 
-![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true) <!-- .element height="50%" width="50%" -->
-![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true) <!-- .element height="50%" width="50%" -->
-![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true) <!-- .element height="50%" width="50%" -->
+![Home Screen](/pushup-app/assets/images/screenshots/mainscreen.png?raw=true) &nbsp;&nbsp;  ![Exercise Details](/pushup-app/assets/images/screenshots/exercisescreen.png?raw=true) &nbsp;&nbsp;  ![Settings Screen](/pushup-app/assets/images/screenshots/settingsscreen.png?raw=true)
 
 ## Tech/framework used
-<b>Built with</b>
-- [Expo](https://expo.io/)
-- [React Native](https://facebook.github.io/react-native/)
-- [Firebase](https://firebase.google.com/)
-- [Facebook](https://developers.facebook.com/)
-- [wger Workout Manager API] https://wger.de)
+<b>Built with:</b>
+[Expo](https://expo.io/)
+
+[React Native](https://facebook.github.io/react-native/)
+
+[Firebase](https://firebase.google.com/)
+
+[Facebook](https://developers.facebook.com/)
+
+[wger Workout Manager API](https://wger.de)
 
 ## Installation
 * Clone this repository:
@@ -44,14 +46,16 @@ REACT_APP_FACEBOOK_APP_ID=
 REACT_APP_FACEBOOK_APP_SECRET=
 
 ## How to use
-* On the main/drinks screen, click on a drink icon to add it to your log.
-* An assignment will pop up on the screen showing the drink type, time the drink was logged, and assigned exercise.
-* Click on the name of an exercise to get more details/instructions.
-* Click on the checkmark next to an assigned exercise to mark complete and dismiss it from your screen.
-* Normal mode pulls from a fixed databased of exercises with accompanying instructional videos.
-* Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
+1. On the main/drinks screen, click on a drink icon to add it to your log.
+2. An assignment will pop up on the screen showing the drink type, time the drink was logged, and assigned exercise.
+3. Click on the name of an exercise to get more details/instructions.
+4. Click on the checkmark next to an assigned exercise to mark complete and dismiss it from your screen.
+5. Normal mode pulls from a fixed databased of exercises with accompanying instructional videos.
+6. Expert mode pulls from the wger Workout Manager Exercise Database API.  This is a wide range of user-generated exercise data, and some descriptions are better than others.  Expert mode allows filtering of exercises based on available equipment.
 
 ## Credits
 Beginner exercise data courtesy of [The CDC](https://www.cdc.gov/physicalactivity/basics/videos/index.htm)
+
 Expert exercise data courtesy of [wger Workout Manager](https://wger.de/en/)
+
 Icons made by [Freepik](http://www.freepik.com/) and [Roundicons](https://www.roundicons.com/) from [www.flaticon.com](https://www.flaticon.com/), licensed by [Creative Commons BY 3.0](https://www.roundicons.com/)
